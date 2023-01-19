@@ -1,0 +1,26 @@
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+
+
+}
+
+
+footer>div {
+  padding: 10px 0 10px;
+  background-color: #000;
+  color: white;
+  text-align: center;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+
+
+
+/*mediaqueries */
+@media screen and (max-width: 768px) {
+  footer p {
+    font-size: 14px;
+  }
+}

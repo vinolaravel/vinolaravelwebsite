@@ -21,6 +21,7 @@
 html {
     font-family: 'Open Sans', sans-serif;
     line-height: 1.5625;
+    height: 100%;
 }
 
 
@@ -46,7 +47,10 @@ section h2{
     font-family: 'Playfair Display', serif;
 }
 
-a:hover, a:visited, a:link, a:active
+a:hover, 
+a:visited, 
+a:link, 
+a:active
 {
     text-decoration: none;
 }

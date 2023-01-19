@@ -1,0 +1,97 @@
+ .containerCatalogue {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+ }
+
+ .carteCatalogue {
+   text-align: center;
+   width: 20%;
+   padding: 20px;
+   margin: 10px;
+   text-align: center;
+   border: 1px solid #ccc;
+   background-color: #fff;
+   box-shadow: 2px 2px 5px #ccc;
+ }
+
+ .carteCatalogue p {
+   margin-top: 10px;
+   font-size: 0.9em;
+   line-height: 1.5;
+ }
+
+
+ .carteCatalogue:hover {
+   box-shadow: 10px 10px 15px #ccc;
+ }
+
+ .carteCatalogue img {
+   width: 50%;
+ }
+
+ .nom {
+   font-size: 1.5em;
+   font-weight: bold;
+   font-family: 'Montserrat', sans-serif;
+   margin-bottom: 10px;
+ }
+
+
+
+ .options button {
+   padding: 10px 20px;
+   background-color: #910717;
+   color: #fff;
+   border: none;
+   cursor: pointer;
+   transition: all 0.3s ease-in-out;
+
+ }
+
+
+ .options button:hover {
+   background-color: #fff;
+   color: #910717;
+ }
+
+ .urlSaq {
+   text-align: center;
+   margin-bottom: 10px;
+   border-bottom: 1px solid black;
+
+ }
+
+ .urlSaq a {
+   color: #910717;
+   text-decoration: none;
+   font-size: 1em;
+ }
+
+
+ .urlSaq:hover {
+   transition: all 0.5s ease-in-out;
+   background-color: black;
+ }
+
+ .urlSaq a:hover{
+  color: white;
+} 
+
+/* médiaqueries*/ 
+ @media screen and (max-width: 768px) {
+  .carteCatalogue {
+    width: 50%;
+  }
+
+  
+  .urlSaq a {
+    font-size: 0.8em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .carteCatalogue {
+    width: 100%;
+  }
+}
