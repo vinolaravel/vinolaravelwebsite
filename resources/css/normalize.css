@@ -1,0 +1,52 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Rythme vertical de base  */
+*+p,
+*+img,
+*+small,
+*+h1,
+*+h2,
+*+h3,
+*+h4,
+*+h5,
+*+h6 {
+    margin-top: 20px;
+}
+
+/* Base typographique à être héritée ==== ref = M.Charpentier*/
+html {
+    font-family: 'Open Sans', sans-serif;
+    line-height: 1.5625;
+}
+
+
+h1,
+h2,
+h3,
+h4 {
+    line-height: 1.25;
+    font-family: 'Playfair Display', serif;
+}
+
+*+section {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    padding: 20px;
+}
+
+header {
+    padding: 30px;
+}
+
+section h2{
+    font-family: 'Playfair Display', serif;
+}
+
+a:hover, a:visited, a:link, a:active
+{
+    text-decoration: none;
+}
