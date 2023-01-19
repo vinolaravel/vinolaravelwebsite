@@ -19,12 +19,12 @@ class BouteilleFactory extends Factory
         return [
             'nom' => $this->faker->name,
             'image' => $this->faker->imageUrl,
-            'code-saq' => $this->faker->numberBetween(1, 1000000),
+            'code_saq' => $this->faker->numberBetween(1, 1000000),
             'pays' => $this->faker->country,
             'description' => fake()->realText(100),
             'prix_saq' => $this->faker->randomFloat(2, 0, 100),
             'url_saq' => $this->faker->url,
-            'url_img' => $this->faker->imageUrl,
+            'url_image' => $this->faker->imageUrl,
             'format' => $this->faker->numberBetween(1, 10),
             'type' => $this->faker->numberBetween(1, 2),
         ];
