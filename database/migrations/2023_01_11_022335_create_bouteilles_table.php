@@ -24,9 +24,11 @@ return new class extends Migration
             $table->string('url_saq', 200);
             $table->string('url_image', 200);
             $table->string('format', 20);
-            $table->string('type', 20);
+            $table->string('type_id', 20);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('type_id')->references('id')->on('types');
         });
     }
 

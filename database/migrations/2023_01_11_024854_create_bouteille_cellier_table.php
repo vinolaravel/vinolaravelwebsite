@@ -17,7 +17,16 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('bouteille_id');
             $table->unsignedBigInteger('cellier_id');
+            $table->string('nom', 200);
+            $table->string('image', 200);
+            $table->string('pays', 50);
+            $table->float('prix_achat', 8, 2);
+            $table->year('millesime');
+            $table->string('description', 200);
+            $table->string('format', 20);
+            $table->unsignedBigInteger('type');
             $table->timestamps();
+            $table->softDeletes();
 
             $table->foreign('bouteille_id')->references('id')->on('bouteilles')->onDelete('cascade');
             $table->foreign('cellier_id')->references('id')->on('celliers')->onDelete('cascade');
