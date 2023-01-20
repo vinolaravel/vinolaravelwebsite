@@ -15,12 +15,14 @@ return new class extends Migration
     {
         Schema::create('celliers', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('bouteille_id');
-            $table->unsignedBigInteger('cellier_id');
+            $table->string('nom', 100);
+            // $table->integer('id_bouteille');
+            $table->integer('quantite');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            $table->softDeletes();
 
-            $table->foreign('bouteille_id')->references('id')->on('bouteilles')->onDelete('cascade');
-            $table->foreign('cellier_id')->references('id')->on('celliers')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
