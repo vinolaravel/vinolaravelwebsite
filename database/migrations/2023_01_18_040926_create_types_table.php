@@ -15,11 +15,6 @@ return new class extends Migration
             $table->string('type', 50);
             $table->timestamps();
         });
-
-        /* DB::table('types')->insert([
-            ['type' => 'rouge'],
-            ['type' => 'blanc'],
-        ]); */
     }
 
     public function down()
