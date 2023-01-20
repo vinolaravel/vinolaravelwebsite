@@ -29,8 +29,8 @@ class User extends Authenticatable
         return $this->hasMany(Cellier::class);
     }
 
-    /*   public function role()
+    public function role()
     {
         return $this->belongsTo(Role::class);
-    } */
+    }
 }
