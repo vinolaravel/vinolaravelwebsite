@@ -18,7 +18,7 @@ return new class extends Migration
             $table->id();
             $table->string('nom', 100);
             $table->string('pays', 50);
-            $table->string('courriel')->unique();
+            $table->string('courriel',100)->unique();
             $table->string('password');
             // $table->rememberToken();
             $table->unsignedBigInteger('role_id')->default(2);
