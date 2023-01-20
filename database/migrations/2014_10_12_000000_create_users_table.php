@@ -20,8 +20,8 @@ return new class extends Migration
             $table->string('province', 50)->nullable();
             $table->string('pays', 50);
             $table->date('ddn');
-            $table->string('courriel')->unique();
-            $table->string('password');
+            $table->string('courriel',100)->unique();
+            $table->string('password',100);
             // $table->rememberToken();
             $table->enum('privilege', ['Membre', 'Administrateur'])->default('Membre');
             $table->timestamps();
