@@ -14,10 +14,10 @@ class Bouteille extends Model
 
     protected $guarded = [];
 
-    /*     public function typeVin()
+    public function type()
     {
-        return $this->belongsTo(TypeVin::class);
-    } */
+        return $this->belongsTo(Type::class);
+    }
 
     public function celliers()
     {
