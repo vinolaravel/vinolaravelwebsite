@@ -14,20 +14,22 @@ return new class extends Migration
     public function up()
     {
         Schema::create('bouteille_cellier', function (Blueprint $table) {
-            
             $table->id();
-            $table->integer('id_bouteille');
-            $table->date('date_achat');
-            $table->string('garde_jusqua', 200);
-            $table->string('notes', 200);
-            $table->float('prix', 8, 2);
-            $table->integer('quantite');
-            $table->integer('millesime');
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('bouteille_id');
+            $table->unsignedBigInteger('cellier_id');
+            $table->string('nom', 200);
+            $table->string('image', 200);
+            $table->string('pays', 50);
+            $table->float('prix_achat', 8, 2);
+            $table->year('millesime');
+            $table->string('description', 200);
+            $table->string('format', 20);
+            $table->unsignedBigInteger('type');
             $table->timestamps();
             $table->softDeletes();
 
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('bouteille_id')->references('id')->on('bouteilles')->onDelete('cascade');
+            $table->foreign('cellier_id')->references('id')->on('celliers')->onDelete('cascade');
         });
     }
 

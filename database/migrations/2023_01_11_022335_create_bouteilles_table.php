@@ -27,6 +27,8 @@ return new class extends Migration
             $table->string('type', 20);
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('type_id')->references('id')->on('types');
         });
     }
 
