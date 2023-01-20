@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Goutte\Client;
+use App\Models\Type;
+// use Illuminate\Support\Facades\Http;
 use App\Models\Bouteille;
 use Illuminate\Http\Request;
-// use Illuminate\Support\Facades\Http;
-use Goutte\Client;
 
 
 class BouteilleController extends Controller
@@ -26,9 +27,10 @@ class BouteilleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function updateSAQ(Client $client, $nombre = 24, $page = 1)
+    public function updateSAQ(Client $client, $nombre = 24, $page = 1, $type = 'blanc')
     {
-        $crawler = $client->request('GET', "https://www.saq.com/fr/produits/vin/vin-rouge?p=" . $page . "&product_list_limit=" . $nombre . "&product_list_order=name_asc")->filter('.product-item')->each(function ($node) {
+        $crawler = $client->request('GET', "https://www.saq.com/fr/produits/vin/vin-" . $type . "?p=" . $page . "&product_list_limit=" . $nombre . "&product_list_order=name_asc")->filter('.product-item')->each(function ($node) {
+            $type = Type::firstOrCreate(['type' => trim(explode("|", $node->filter('.product-item-identity-format span')->text())[0]) == "Vin rouge" ? "Rouge" : "Blanc"]);
             return [
                 'nom' => $node->filter('.product-item-link')->text(),
                 'image' => $node->filter('.product-image-photo')->attr('src'),
@@ -39,7 +41,7 @@ class BouteilleController extends Controller
                 'url_saq' => $node->filter('.product-item-link')->attr('href'),
                 'url_image' => $node->filter('.product-image-photo')->attr('src'),
                 'format' => trim(explode("|", $node->filter('.product-item-identity-format span')->text())[1]),
-                'type' => trim(explode("|", $node->filter('.product-item-identity-format span')->text())[0]),
+                'type_id' => $type->id
             ];
         });
 
