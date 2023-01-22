@@ -31,13 +31,8 @@
 @foreach ($celliers as $cellier)
     <li>{{ $cellier->millesime }}</li>
 @endforeach
-<?php
-    /* foreach ($celliers as $cellier) {
-        echo '<pre>';
-        print_r($cellier->id);
-        echo '</pre>';
-    } */
-?>
+
+<a href="{{ route('bouteilles.index') }}">go to bouteilles</a>
 
 
 
