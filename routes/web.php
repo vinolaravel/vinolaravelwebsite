@@ -28,6 +28,10 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/celliers', [CellierController::class, 'store'])->name('celliers.store');
 
+    Route::delete('/celliers/{id}/bouteilles/{idBouteille}', [BouteilleController::class, 'destroy'])->name('bouteilles.remove');
+
+    Route::get('/celliers/{id}/bouteilles/createBouteille', [BouteilleController::class, 'create'])->name('bouteilles.create');
+    Route::post('/celliers/{id}/bouteilles/storeBouteille', [BouteilleController::class, 'store'])->name('bouteilles.store');
     Route::get('/celliers/{id}/bouteilles', [CellierController::class, 'show'])->name('celliers.show');
 
     Route::get('/celliers/{id}/bouteilles/{idbouteille}', [CellierController::class, 'detailsBouteille'])->name('celliers.detailsBouteille');
@@ -35,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/celliers/{id}/bouteilles/add/{idBouteille}', [BouteilleController::class, 'addBouteille'])->name('bouteilles.add');
 
     Route::post('/celliers/{id}/bouteilles/drink/{idBouteille}', [BouteilleController::class, 'drinkBouteille'])->name('bouteilles.drink');
+
 
 
     Route::get('/updateSAQ', [BouteilleController::class, 'updateSAQ'])->name('updateSAQ');
