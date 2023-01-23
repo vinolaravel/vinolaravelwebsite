@@ -7,6 +7,7 @@ use App\Models\Type;
 // use Illuminate\Support\Facades\Http;
 use App\Models\Bouteille;
 use Illuminate\Http\Request;
+use App\Models\BouteilleCellier;
 
 
 class BouteilleController extends Controller
@@ -16,9 +17,9 @@ class BouteilleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $bouteilles = Bouteille::all();
+        $bouteilles = BouteilleCellier::all();
         return view('bouteilles', compact('bouteilles'));
     }
 
@@ -54,6 +55,31 @@ class BouteilleController extends Controller
         return view('bouteilles', compact('bouteilles'));
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function addBouteille(Request $request, $id)
+    {
+        $bouteille = BouteilleCellier::findOrfail($request->idBouteille);
+        $bouteille->quantite = $bouteille->quantite + 1;
+        $bouteille->save();
+        return redirect()->route('celliers.show', $id);
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function drinkBouteille(Request $request, $id)
+    {
+        $bouteille = BouteilleCellier::findOrfail($request->idBouteille);
+        $bouteille->quantite = $bouteille->quantite - 1;
+        $bouteille->save();
+        return redirect()->route('celliers.show', $id);
+    }
 
     /**
      * Show the form for creating a new resource.
