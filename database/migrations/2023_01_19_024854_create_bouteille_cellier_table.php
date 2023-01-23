@@ -1,8 +1,9 @@
 <?php
 
-use Illuminate\Database\Migrations\Migration;
-use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
 
 return new class extends Migration
 {
@@ -17,6 +18,8 @@ return new class extends Migration
             $table->string('image', 200);
             $table->string('pays', 50);
             $table->float('prix_achat', 8, 2);
+            $table->date('date_achat')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->date('garde_jusqua');
             $table->year('millesime');
             $table->integer('quantite');
             $table->string('description', 200);
@@ -26,8 +29,8 @@ return new class extends Migration
             $table->softDeletes();
 
             $table->foreign('bouteille_id')->references('id')->on('bouteilles');
-            $table->foreign('cellier_id')->references('id')->on('celliers');
-            $table->foreign('type_id')->references('id')->on('types');
+            $table->foreign('cellier_id')->references('id')->on('celliers')->onDelete('cascade');
+            $table->foreign('type_id')->references('type_id')->on('bouteilles')->onDelete('cascade');
         });
     }
 
