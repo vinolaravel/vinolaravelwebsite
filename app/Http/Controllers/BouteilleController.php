@@ -156,7 +156,7 @@ class BouteilleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request, $id)
     {
         //
     }
@@ -179,9 +179,9 @@ class BouteilleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        BouteilleCellier::where('id', $id)->delete();
+        BouteilleCellier::where('id', $request->idBouteille)->delete();
         return redirect()->route('celliers.show', $id);
     }
 }
