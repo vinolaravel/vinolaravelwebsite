@@ -17,36 +17,22 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
     Route::get('/celliers', [CellierController::class, 'index'])->name('celliers');
-
+    Route::post('/celliers', [CellierController::class, 'store'])->name('celliers.store');
     Route::get('/celliers/ajouter', [CellierController::class, 'create'])->name('celliers.create');
-
     Route::get('/celliers/{id}/edit', [CellierController::class, 'edit'])->name('celliers.edit');
-
     Route::put('/celliers/{id}', [CellierController::class, 'update'])->name('celliers.update');
-
     Route::delete('/celliers/{id}', [CellierController::class, 'destroy'])->name('celliers.destroy');
 
-    Route::post('/celliers', [CellierController::class, 'store'])->name('celliers.store');
 
+    Route::get('/celliers/{id}/bouteilles', [CellierController::class, 'show'])->name('celliers.show');
+    // ici
     Route::delete('/celliers/{id}/bouteilles/{idBouteille}', [BouteilleController::class, 'destroy'])->name('bouteilles.remove');
-
     Route::get('/celliers/{id}/bouteilles/createBouteille', [BouteilleController::class, 'create'])->name('bouteilles.create');
     Route::post('/celliers/{id}/bouteilles/storeBouteille', [BouteilleController::class, 'store'])->name('bouteilles.store');
-    Route::get('/celliers/{id}/bouteilles', [CellierController::class, 'show'])->name('celliers.show');
-
     Route::get('/celliers/{id}/bouteilles/{idbouteille}', [CellierController::class, 'detailsBouteille'])->name('celliers.detailsBouteille');
-
     Route::post('/celliers/{id}/bouteilles/add/{idBouteille}', [BouteilleController::class, 'addBouteille'])->name('bouteilles.add');
-
     Route::post('/celliers/{id}/bouteilles/drink/{idBouteille}', [BouteilleController::class, 'drinkBouteille'])->name('bouteilles.drink');
-
-
-
     Route::get('/updateSAQ', [BouteilleController::class, 'updateSAQ'])->name('updateSAQ');
-
-
-
-
 
 
 
