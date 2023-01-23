@@ -24,10 +24,7 @@
             <button type="submit" class="btn btn-danger">Enlever</button>
         </form>
 
-        {{-- modifier une bouteille --}}
-        {{-- <a href="{{ route('bouteilles.edit', [$cellier->id, $bouteille->id]) }}">
-            <button class="btn btn-primary">Modifier</button>
-        </a> --}}
+        {{-- ici --}}
     @empty
         <p>Aucune bouteille disponible</p>
         {{-- <a href="">Cliquez ici pour ajouter une bouteille</a> --}}
