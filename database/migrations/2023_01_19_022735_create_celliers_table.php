@@ -12,7 +12,6 @@ return new class extends Migration
         Schema::create('celliers', function (Blueprint $table) {
             $table->id();
             $table->string('nom', 100);
-            $table->integer('quantite');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletes();
