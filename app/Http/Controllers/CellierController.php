@@ -20,7 +20,7 @@ class CellierController extends Controller
         $celliers = Cellier::where('user_id', auth()->user()->id)->get();
 
         foreach ($celliers as $cellier) {
-            $cellier->nbBouteilles = BouteilleCellier::where('cellier_id', $cellier->id)->count();
+            $cellier->nbBouteilles = BouteilleCellier::where('cellier_id', $cellier->id)->sum('quantite');
         }
 
         return view('celliers')->with('celliers', $celliers);
