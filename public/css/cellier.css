@@ -14,21 +14,7 @@
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
  }
 
-.containerCatalogue a {
-  color: #910717;
-  text-decoration: none;
-  font-size: 1em;
-  margin: 20px 0;
-  display: block;
-}
 
-
-.containerCatalogue a:hover {
-  color: #fff;
-  background-color: #910717;
-  padding: 10px;
-  transition: all 0.3s ease-in-out;
-}
 
  .carteCatalogue p {
    margin-top: 10px;
@@ -61,6 +47,7 @@
    border: none;
    cursor: pointer;
    transition: all 0.3s ease-in-out;
+  border-radius: none;
 
  }
 

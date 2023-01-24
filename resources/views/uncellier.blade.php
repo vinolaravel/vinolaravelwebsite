@@ -28,9 +28,11 @@
                 @method('DELETE')
                 <button type="submit" class="btn btn-danger">Enlever</button>
             </form>
+            <a href="{{ route('bouteilles.edit', [$cellier->id, $bouteille->id]) }}">
+                    <button class="btn btn-primary">Modifier la bouteille</button>
+                </a>
         </div>
     </div>
-    {{-- ici --}}
     @empty
     <p>Aucune bouteille disponible</p>
     @endforelse
