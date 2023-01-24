@@ -1,15 +1,16 @@
 <x-guest-layout>
+    <section class="form">
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}"> {{-- tu peux mettre une classe ici pour appliquer le même style sur tous les formulaires --}}
+    <form method="POST" action="{{ route('login') }}">
         @csrf
 
         <!-- Email Address -->
         <div>
-            <x-input-label for="email" :value="__('Courriel')" /> {{-- les labels --}}
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus /> {{-- les inputs, tu peux modifier les classes --}}
-            <x-input-error :messages="$errors->get('email')" class="mt-2" /> {{-- ne les touche pas --}}
+            <x-input-label for="email" :value="__('Courriel')" /> 
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+            <x-input-error :messages="$errors->get('email')" class="mt-2" /> 
         </div>
 
         <!-- Password -->
@@ -44,4 +45,6 @@
             </x-primary-button>
         </div>
     </form>
+
+    </section>
 </x-guest-layout>

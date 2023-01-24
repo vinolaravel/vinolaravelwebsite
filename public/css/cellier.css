@@ -7,13 +7,28 @@
  .carteCatalogue {
    text-align: center;
    width: 20%;
-   padding: 20px;
+   padding: 60px;
    margin: 10px;
    text-align: center;
-   border: 1px solid #ccc;
    background-color: #fff;
-   box-shadow: 2px 2px 5px #ccc;
+   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
  }
+/* Link style */
+.containerCatalogue a {
+  color: #910717;
+  text-decoration: none;
+  font-size: 1em;
+  margin: 20px 0;
+  display: block;
+}
+
+/* Link hover effect */
+.containerCatalogue a:hover {
+  color: #fff;
+  background-color: #910717;
+  padding: 10px;
+  transition: all 0.3s ease-in-out;
+}
 
  .carteCatalogue p {
    margin-top: 10px;
@@ -40,7 +55,7 @@
 
 
  .options button {
-   padding: 10px 20px;
+   padding: 10px 10px;
    background-color: #910717;
    color: #fff;
    border: none;
