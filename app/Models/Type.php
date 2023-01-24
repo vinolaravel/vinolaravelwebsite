@@ -6,14 +6,16 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Role extends Model
+class Type extends Model
 {
     use HasFactory;
 
-    // protected $guarded = ['id'];
+    protected $fillable = [
+        'type',
+    ];
 
-    public function users()
+    public function bouteilles()
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(Bouteille::class);
     }
 }

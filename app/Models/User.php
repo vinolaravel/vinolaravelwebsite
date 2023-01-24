@@ -11,7 +11,7 @@ use Laravel\Sanctum\HasApiTokens;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable  /* , SoftDeletes */  ;
+    use HasApiTokens, HasFactory, Notifiable, SoftDeletes;
 
     protected $guarded = [];
 
@@ -29,8 +29,8 @@ class User extends Authenticatable
         return $this->hasMany(Cellier::class);
     }
 
-    /*   public function role()
+    public function role()
     {
         return $this->belongsTo(Role::class);
-    } */
+    }
 }

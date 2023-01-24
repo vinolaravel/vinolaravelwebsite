@@ -1,41 +1,48 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\CellierController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\CellierController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\BouteilleController;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
+
 
 
 Route::get('/', function () {
-    return view('celliers');
+    return view('welcome');
 });
-/* Route::get('', [CellierController::class, 'index'])->name('celliers.index'); */
 
 
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
-// Laravel Breeze
 Route::middleware('auth')->group(function () {
+    Route::get('/celliers', [CellierController::class, 'index'])->name('celliers');
+    Route::post('/celliers', [CellierController::class, 'store'])->name('celliers.store');
+    Route::get('/celliers/ajouter', [CellierController::class, 'create'])->name('celliers.create');
+    Route::get('/celliers/{id}/edit', [CellierController::class, 'edit'])->name('celliers.edit');
+    Route::put('/celliers/{id}', [CellierController::class, 'update'])->name('celliers.update');
+    Route::delete('/celliers/{id}', [CellierController::class, 'destroy'])->name('celliers.destroy');
+
+
+    Route::get('/celliers/{id}/bouteilles', [CellierController::class, 'show'])->name('celliers.show');
+
+    //routes
+    Route::get('/celliers/{id}/bouteilles/{idBouteille}/edit', [BouteilleController::class, 'edit'])->name('bouteilles.edit');
+    Route::put('/celliers/{id}/bouteilles/{idBouteille}/update', [BouteilleController::class, 'update'])->name('bouteilles.update');
+
+    Route::delete('/celliers/{id}/bouteilles/{idBouteille}', [BouteilleController::class, 'destroy'])->name('bouteilles.remove');
+    Route::get('/celliers/{id}/bouteilles/createBouteille', [BouteilleController::class, 'create'])->name('bouteilles.create');
+    Route::post('/celliers/{id}/bouteilles/storeBouteille', [BouteilleController::class, 'store'])->name('bouteilles.store');
+    Route::get('/celliers/{id}/bouteilles/{idbouteille}', [CellierController::class, 'detailsBouteille'])->name('celliers.detailsBouteille');
+    Route::post('/celliers/{id}/bouteilles/add/{idBouteille}', [BouteilleController::class, 'addBouteille'])->name('bouteilles.add');
+    Route::post('/celliers/{id}/bouteilles/drink/{idBouteille}', [BouteilleController::class, 'drinkBouteille'])->name('bouteilles.drink');
+    Route::get('/updateSAQ', [BouteilleController::class, 'updateSAQ'])->name('updateSAQ');
+
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
-
 });
 
 require __DIR__ . '/auth.php';

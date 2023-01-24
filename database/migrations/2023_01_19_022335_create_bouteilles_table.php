@@ -6,11 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    // creation de la table bouteilles
     public function up()
     {
         Schema::create('bouteilles', function (Blueprint $table) {
@@ -24,9 +20,11 @@ return new class extends Migration
             $table->string('url_saq', 200);
             $table->string('url_image', 200);
             $table->string('format', 20);
-            $table->string('type', 20);
+            $table->unsignedBigInteger('type_id');
             $table->timestamps();
             $table->softDeletes();
+
+            $table->foreign('type_id')->references('id')->on('types');
         });
     }
 

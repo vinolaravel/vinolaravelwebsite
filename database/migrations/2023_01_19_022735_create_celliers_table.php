@@ -6,22 +6,12 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
+    // creation de la table celliers
     public function up()
     {
         Schema::create('celliers', function (Blueprint $table) {
             $table->id();
-            $table->integer('id_bouteille');
-            $table->date('date_achat');
-            $table->string('garde_jusqua', 200);
-            $table->string('notes', 200);
-            $table->float('prix', 8, 2);
-            $table->integer('quantite');
-            $table->integer('millesime');
+            $table->string('nom', 100);
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
             $table->softDeletes();

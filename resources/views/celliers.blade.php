@@ -1,48 +1,32 @@
-@extends('layouts.app')
+<x-app-layout>
+    @forelse ($celliers as $cellier)
+        <div class="cellier">
+            <h2>{{ $cellier->nom }}</h2>
+            @if ($cellier->nbBouteilles == 0)
+                <h3>Ce cellier est vide!</h3>                
+            @endif
+            @if ($cellier->nbBouteilles > 0)
+                @if ($cellier->nbBouteilles == 1)
+                    <h3>Contient 1 bouteille</h3>
+                    
+                @else 
+                    <h3>Contient {{ $cellier->nbBouteilles }} bouteilles</h3>
+                @endif
+            @endif
+            <a href="{{ route('celliers.show', $cellier->id) }}">Voir le contenu du cellier</a>
 
-@section('contenu')
+            <form action="{{ route('celliers.destroy', $cellier->id) }}" method="post">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Supprimer</button>
+            </form>
 
-{{-- <section class="containerCatalogue">
-    @foreach ($celliers as $cellier)
-        <div class="carteCatalogue" data-quantite="">
-            <div>
-                <img src="https:{{$cellier->image}}">
-                <p class="nom">Nom : {{$cellier->nom}}</p>
-                <p class="quantite">Quantité : {{$cellier->quantite}}</p>
-                <p class="pays">Pays : {{$cellier->pays}}</p>
-                <p class="type">Type : {{$cellier->type}}</p>
-                <p class="millesime">Millesime : {{$cellier->millesime}}</p>
-                <p><a href="{{$cellier->url_saq}}">Voir SAQ</a></p>
-                <article class="options" data-id="{{$cellier->id_bouteille_cellier}}">
-                    <button name="btnAjouter" class="btnAjouter">Ajouter</button>
-                    <button name="btnModifier" class="btnModifier">Modifier</button>
-                    <button name="btnBoire" class="btnBoire">Boire</button>
-                </article>
-            </div>
+            <a href="{{ route('celliers.edit', $cellier->id) }}">
+                <button class="btn btn-primary">Modifier</button>
+            </a>
         </div>
-    @endforeach
-</section> --}}
-
-
-
-
-{{-- {{ $celliers}} --}}
-
-@foreach ($celliers as $cellier)
-    <li>{{ $cellier->millesime }}</li>
-@endforeach
-<?php
-    /* foreach ($celliers as $cellier) {
-        echo '<pre>';
-        print_r($cellier->id);
-        echo '</pre>';
-    } */
-?>
-
-
-
-
-@endsection
-
-
-
+    @empty
+        <p>Aucun cellier disponible</p>
+        <a href="{{ route('celliers.create', auth()->user()->id) }}">Cliquez ici pour créer un nouveau cellier</a>
+    @endforelse
+</x-app-layout>
