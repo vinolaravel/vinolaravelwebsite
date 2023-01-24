@@ -42,7 +42,6 @@
     color: #fff;
 }
 
-/* Responsive styles */
 @media (max-width: 768px) {
     .cellier {
         width: 90%;
