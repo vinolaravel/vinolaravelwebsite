@@ -1,7 +1,7 @@
 header{
     min-height: 300px;
 }
-/* Nav container */
+
 .custom-nav {
     display: flex;
     align-items: center;
@@ -12,13 +12,13 @@ header{
     min-height: 150px;
 }
 
-/* Logo */
+
 .logo {
     width: 50px;
     height: 50px;
 }
 
-/* Navigation links */
+
 .nav-links {
     display: flex;
     justify-content: space-between;
@@ -31,9 +31,9 @@ header{
 .nav-links a {  
     display: block;
     padding: 10px 20px;
-    color: #fff; /* change color to white */
+    color: #fff; 
     text-decoration: none;
-    transition: all 0.3s ease-in-out; /* add transition */
+    transition: all 0.3s ease-in-out; 
     position: relative;
     text-transform: uppercase;
 }
@@ -55,20 +55,20 @@ header{
 }
 
 
-/* Settings dropdown */
+
 .settings-dropdown {
     margin-left: 20px;
 }
 
-/* Dropdown button */
+
 .dropdown-button {
   
     padding: 10px;
 }
 
-/* Media Queries */
+
 @media (max-width: 600px) {
-    /* Adjust logo and settings dropdown on small screens */
+
     .logo {
         width: 40px;
         height: 40px;
@@ -76,8 +76,5 @@ header{
     .settings-dropdown {
         margin-left: 0;
     }
-    /* Hide navigation links on small screens */
-    .nav-links {
-        display: none;
-    }
+ 
 }
