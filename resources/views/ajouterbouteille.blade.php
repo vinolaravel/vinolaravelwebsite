@@ -1,5 +1,5 @@
 <x-app-layout>
-    <form action="{{ route('bouteilles.store', $cellier->id) }}" method="post">
+    <form action="{{ route('bouteilles.store', $cellier->id) }}" method="post" enctype="multipart/form-data">
         @csrf
 
         <button id="btnSAQ">Choisir une bouteille de la SAQ</button>
@@ -28,7 +28,7 @@
 
             <div>
                 <label for="millesime">Millesime</label>
-                <input type="number" name="millesime" id="millesime" placeholder="Entrez le millesime">
+                <input type="year" name="millesime" id="millesime" placeholder="Entrez le millesime">
             </div>
 
             <div>
@@ -50,7 +50,7 @@
 
             <div>
                 <label for="image">Image</label>
-                <input type="file" name="image" id="image">
+                <input type="file" name="image" id="image" accept=".jpg, .png, .jpeg">
             </div>
 
             <div>
@@ -59,13 +59,13 @@
             </div>
 
             <div>
-                <label for="description">Description</label>
-                <textarea name="description" id="description" cols="30" rows="10"></textarea>
+                <label for="date_achat">Date d'achat</label>
+                <input type="date" name="date_achat" id="date_achat" placeholder="Entrez la date d'achat">
             </div>
 
             <div>
-                <label for="format">Format</label>
-                <input type="text" name="format" id="format" placeholder="ml">
+                <label for="prix_achat">Prix d'achat</label>
+                <input type="number" name="prix_achat" id="prix_achat" placeholder="entrez prix">
             </div>
 
             <div>
@@ -77,18 +77,13 @@
             </div>
 
             <div>
-                <label for="prix_achat">Prix d'achat</label>
-                <input type="number" name="prix_achat" id="prix_achat" placeholder="entrez prix">
-            </div>
-
-            <div>
-                <label for="date_achat">Date d'achat</label>
-                <input type="date" name="date_achat" id="date_achat" placeholder="Entrez la date d'achat">
+                <label for="quantite">Quantite</label>
+                <input type="number" name="quantite" id="quantite" placeholder="Entrez la quantite">
             </div>
 
             <div>
                 <label for="millesime">Millesime</label>
-                <input type="number" name="millesime" id="millesime" placeholder="Entrez le millesime">
+                <input type="year" name="millesime" id="millesime" placeholder="Entrez le millesime">
             </div>
 
             <div>
@@ -97,8 +92,13 @@
             </div>
 
             <div>
-                <label for="quantite">Quantite</label>
-                <input type="number" name="quantite" id="quantite" placeholder="Entrez la quantite">
+                <label for="format">Format</label>
+                <input type="number" name="format" id="format" {{-- placeholder="ml" --}} maxlength="4">
+            </div>
+
+            <div>
+                <label for="description">Description</label>
+                <textarea name="description" id="description" cols="30" rows="10"></textarea>
             </div>
         </template>
 
