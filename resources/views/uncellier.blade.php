@@ -3,7 +3,11 @@
     @forelse ($bouteilles as $bouteille)
         <div class="bouteille">
             <h1><b>id de la bouteille:</b> {{ $bouteille->id }}</h1>
-            <img src="{{ $bouteille->image }}" alt="{{ $bouteille->nom }}">
+            @if (substr($bouteille->image, 0, 8) == 'https://')
+                <img src="{{ $bouteille->image }}" alt="{{ $bouteille->nom }}" width="100px">
+            @else
+                <img src="{{ asset('images/' . $bouteille->image) }}" alt="{{ $bouteille->nom }}" width="100px">
+            @endif
             <h2><b>nom de la bouteille:</b> {{ $bouteille->nom }}</h2>
             <h3><b>quantite:</b> {{ $bouteille->quantite }}</h3>
             {{-- <a href="{{ route('bouteilles.show', $bouteille->id) }}">Les détails de la bouteille</a> --}}
@@ -24,7 +28,9 @@
             <button type="submit" class="btn btn-danger">Enlever</button>
         </form>
 
-        {{-- ici --}}
+        <a href="{{ route('bouteilles.edit', [$cellier->id, $bouteille->id]) }}">
+            <button class="btn btn-primary">Modifier la bouteille</button>
+        </a>
     @empty
         <p>Aucune bouteille disponible</p>
         {{-- <a href="">Cliquez ici pour ajouter une bouteille</a> --}}
