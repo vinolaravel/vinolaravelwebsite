@@ -12,9 +12,12 @@ form {
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
+  text-align: center;
 }
 .form-title{
-  font-size: 2em;
+  font-size: 1.5em;
+  margin-bottom:30px ;
+  width: 100%;
 }
 .form img {
 
@@ -23,13 +26,18 @@ form {
 }
 form input {
   width: 100%;
-  margin-bottom: 10px;
-
+  max-width: 250px;
+ /*  margin-bottom: 20px; */
   padding: 0.5em;
   font-size: 1em;
   border: none;
-  border-bottom: 1px solid #ccc;
+  border-bottom: 2px solid #ccc; 
 }
+
+/* form label{
+  color: red;
+  margin-top: 55px;
+} */
 .imgForm{
   width: 100%;
   margin-bottom: 20px;

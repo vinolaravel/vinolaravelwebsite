@@ -25,8 +25,7 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/celliers/{id}/bouteilles', [CellierController::class, 'show'])->name('celliers.show');
-
-    //routes
+    
     Route::get('/celliers/{id}/bouteilles/{idBouteille}/edit', [BouteilleController::class, 'edit'])->name('bouteilles.edit');
     Route::put('/celliers/{id}/bouteilles/{idBouteille}/update', [BouteilleController::class, 'update'])->name('bouteilles.update');
 

@@ -1,4 +1,5 @@
 <x-app-layout>
+
     <section class="form">
         <h5 class="form-title">Ajouter une bouteille</h5><br>
         <form action="{{ route('bouteilles.store', $cellier->id) }}" method="post">
@@ -33,3 +34,33 @@
 
     </section>
 </x-app-layout>
+
+
+<script>
+    (function(){
+        let btnSAQ = document.getElementById('btnSAQ'),
+            btnPerso = document.getElementById('btnPerso'),
+            saqBouteille = document.getElementById('saqBouteille'),
+            newBouteille = document.getElementById('newBouteille'),
+            saqTemplate = document.getElementById('saqTemplate'),
+            newBouteilleTemplate = document.getElementById('newBouteilleTemplate');
+            
+        btnSAQ.addEventListener('click', function(){
+            newBouteille.innerHTML = '';
+            let cloneSAQ = saqTemplate.content.cloneNode(true);
+            saqBouteille.appendChild(cloneSAQ);
+            saqBouteille.style.display = 'block';
+            btnSAQ.disabled = true;
+            btnPerso.disabled = false;
+        });
+
+        btnPerso.addEventListener('click', function(){
+            saqBouteille.innerHTML = '';
+            let cloneNewBouteille = newBouteilleTemplate.content.cloneNode(true);
+            newBouteille.appendChild(cloneNewBouteille);
+            newBouteille.style.display = 'block';
+            btnPerso.disabled = true;
+            btnSAQ.disabled = false;
+        });
+    })()
+</script>

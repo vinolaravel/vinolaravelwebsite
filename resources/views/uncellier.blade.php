@@ -1,4 +1,5 @@
 <x-app-layout>
+
 <section class="containerCatalogue">
     @forelse ($bouteilles as $bouteille)
     <div class="carteCatalogue">
@@ -40,6 +41,4 @@
 
 <a href="{{ route('celliers') }}">Retour à la liste des celliers</a>
 <a href="{{ route('bouteilles.create', $cellier->id) }}">Ajouter une bouteille de vin au cellier</a>
-
-
 </x-app-layout>
