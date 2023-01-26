@@ -15,6 +15,15 @@ return new class extends Migration
             $table->string('type', 50);
             $table->timestamps();
         });
+
+        DB::table('types')->insert([
+            [
+                'type' => 'Vin blanc'
+            ],
+            [
+                'type' => 'Vin rouge'
+            ]
+        ]);
     }
 
     public function down()
