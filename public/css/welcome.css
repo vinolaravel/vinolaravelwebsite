@@ -1,0 +1,68 @@
+.accueilContent {
+    min-height: 100%;
+    min-width: 1024px;
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url(../img/gd.jpg) no-repeat right;
+
+}
+
+.landingPage {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+}
+
+
+.landingPage>div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 400px;
+    margin: 20px;
+    width: 50%;
+    font-size: 1.5rem;
+    align-items: center;
+}
+
+.landingPage a {
+    display: inline-block;
+    padding: 12px 24px;
+    margin: 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
+    background-color: #c63030;
+    border: none;
+    transition: background-color 0.3s ease;
+    align-items: end;
+
+}
+
+.titreLanding {
+    align-self: flex-start;
+    margin-bottom: 80px;
+    margin-top: 80px;
+    color: white;
+    font-size: 1.5rem;
+}
+
+div.titreLanding h1 {
+    font-size: 5em;
+}
+
+.liens {
+    align-self: flex-start;
+
+
+}
+
+.landingPage a:hover {
+    background-color: #be4b28;
+
+}

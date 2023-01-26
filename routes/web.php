@@ -26,10 +26,12 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/celliers/{id}/bouteilles', [CellierController::class, 'show'])->name('celliers.show');
+
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     Route::get('/celliers/{id}/bouteilles/{idBouteille}/edit', [BouteilleController::class, 'edit'])->name('bouteilles.edit');
     Route::put('/celliers/{id}/bouteilles/{idBouteille}/update', [BouteilleController::class, 'update'])->name('bouteilles.update');
     // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
     Route::delete('/celliers/{id}/bouteilles/{idBouteille}', [BouteilleController::class, 'destroy'])->name('bouteilles.remove');
     Route::get('/celliers/{id}/bouteilles/createBouteille', [BouteilleController::class, 'create'])->name('bouteilles.create');
     Route::post('/celliers/{id}/bouteilles/storeBouteille', [BouteilleController::class, 'store'])->name('bouteilles.store');

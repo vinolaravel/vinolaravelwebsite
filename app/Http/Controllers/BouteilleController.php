@@ -161,8 +161,11 @@ class BouteilleController extends Controller
      */
     public function edit(Request $request, $id)
     {
-        //
+        $bouteille = Bouteille::findOrFail($request->idBouteille);
+        $cellier = Cellier::where('id', $id)->first();
+        return view('editbouteille')->with('bouteille', $bouteille)->with('cellier', $cellier);
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -173,7 +176,23 @@ class BouteilleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $bouteille = Bouteille::findOrfail($request->idBouteille)->first();
+        // dd($bouteille);
+        $request->validate([
+            'nom' => 'required',
+            'pays' => 'required',
+            'prix_achat' => 'required|numeric',
+            'date_achat' => 'required|date',
+            'garde_jusqua' => 'required|date',
+            'millesime' => 'required|numeric',
+            'quantite' => 'required|numeric',
+            'description' => 'required',
+            'format' => 'required',
+        ]);
+
+        $bouteille->update($request->all());
+
+        return redirect()->route('celliers.show', $id);
     }
 
     /**

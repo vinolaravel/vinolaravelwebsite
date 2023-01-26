@@ -18,11 +18,11 @@
             <form action="{{ route('celliers.destroy', $cellier->id) }}" method="post">
                 @csrf
                 @method('DELETE')
-                <button type="submit" class="btn btn-danger">Supprimer</button>
+                <button type="submit">Supprimer</button>
             </form>
 
             <a href="{{ route('celliers.edit', $cellier->id) }}">
-                <button class="btn btn-primary">Modifier</button>
+                <button>Modifier</button>
             </a>
         </div>
     @empty
