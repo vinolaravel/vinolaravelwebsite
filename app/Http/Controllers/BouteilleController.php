@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 // use Illuminate\Support\Facades\Http;
 use App\Models\Cellier;
 use App\Models\Bouteille;
-use Illuminate\Http\Request;
 use App\Models\BouteilleSaq;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 class BouteilleController extends Controller
@@ -60,7 +61,7 @@ class BouteilleController extends Controller
      */
     public function create(Request $request, $id)
     {
-        $bouteilles = Bouteille::all();
+        $bouteilles = BouteilleSaq::all();
         $cellier = Cellier::where('id', $id)->first();
         return view('ajouterbouteille')->with('cellier', $cellier)->with('bouteilles', $bouteilles);
     }
@@ -74,13 +75,12 @@ class BouteilleController extends Controller
      */
     public function store(Request $request)
     {
-        $image = $request->file('image');
-        $fileName = $image->getClientOriginalName();
-        $uploaded = $image->move(public_path('images'), $image->getClientOriginalName());
-
-        // dd($wholePath);
         if (isset($request->pays)) {
-            $valide = $request->validate([
+            $image = $request->file('image');
+            $fileName = $image->getClientOriginalName();
+            $image->move(public_path('images'), $image->getClientOriginalName());
+
+            $request->validate([
                 'nom' => 'required | max:100',
                 // 'image' => 'required | image | mimes:jpeg,jpg,png | max:1000',
                 'pays' => 'required | max:50',
@@ -95,9 +95,8 @@ class BouteilleController extends Controller
             ]);
 
 
-            $ok = Bouteille::create([
+            Bouteille::create([
                 'cellier_id' => $request->id,
-                'bouteille_id' => DB::table('bouteille_celliers')->max('bouteille_id') + 1,
                 'nom' => $request->nom,
                 'image' => $fileName,
                 'pays' => $request->pays,
@@ -110,8 +109,6 @@ class BouteilleController extends Controller
                 'format' => $request->format,
                 'description' => $request->description,
             ]);
-
-            // dd($ok);
 
             return redirect()->route('celliers.show', $request->id);
         } else {
@@ -126,7 +123,6 @@ class BouteilleController extends Controller
 
             $bouteilleUSER = Bouteille::create(
                 [
-                    'bouteille_id' => $bouteilleSAQ->id,
                     'cellier_id' => $request->id,
                     'nom' => $bouteilleSAQ->nom,
                     'image' => $bouteilleSAQ->image,

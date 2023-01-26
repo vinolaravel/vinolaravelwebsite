@@ -25,7 +25,7 @@ class BouteilleSaqController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function updateSAQ(Client $client, $nombre = 24, $page = 1, $type = 'blanc')
+    public function updateSAQ(Client $client, $nombre = 24, $page = 1, $type = 'rouge')
     {
         $crawler = $client->request('GET', "https://www.saq.com/fr/produits/vin/vin-" . $type . "?p=" . $page . "&product_list_limit=" . $nombre . "&product_list_order=name_asc")->filter('.product-item')->each(function ($node) {
             $type = Type::firstOrCreate(['type' => trim(explode("|", $node->filter('.product-item-identity-format span')->text())[0]) == "Vin rouge" ? "Rouge" : "Blanc"]);
