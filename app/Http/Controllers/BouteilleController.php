@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Goutte\Client;
-use App\Models\Type;
 // use Illuminate\Support\Facades\Http;
 use App\Models\Cellier;
 use App\Models\Bouteille;
 use Illuminate\Http\Request;
-use App\Models\BouteilleCellier;
+use App\Models\BouteilleSaq;
 
 
 class BouteilleController extends Controller
@@ -20,7 +18,7 @@ class BouteilleController extends Controller
      */
     public function index(Request $request)
     {
-        $bouteilles = BouteilleCellier::all();
+        $bouteilles = Bouteille::all();
         return view('bouteilles', compact('bouteilles'));
     }
 
@@ -31,7 +29,7 @@ class BouteilleController extends Controller
      */
     public function addBouteille(Request $request, $id)
     {
-        $bouteille = BouteilleCellier::findOrfail($request->idBouteille);
+        $bouteille = Bouteille::findOrfail($request->idBouteille);
         $bouteille->quantite = $bouteille->quantite + 1;
         $bouteille->save();
         return redirect()->route('celliers.show', $id);
@@ -44,7 +42,7 @@ class BouteilleController extends Controller
      */
     public function drinkBouteille(Request $request, $id)
     {
-        $bouteille = BouteilleCellier::findOrfail($request->idBouteille);
+        $bouteille = Bouteille::findOrfail($request->idBouteille);
         $bouteille->quantite = $bouteille->quantite - 1;
         $bouteille->save();
 
@@ -97,7 +95,7 @@ class BouteilleController extends Controller
             ]);
 
 
-            $ok = BouteilleCellier::create([
+            $ok = Bouteille::create([
                 'cellier_id' => $request->id,
                 'bouteille_id' => DB::table('bouteille_celliers')->max('bouteille_id') + 1,
                 'nom' => $request->nom,
@@ -117,7 +115,7 @@ class BouteilleController extends Controller
 
             return redirect()->route('celliers.show', $request->id);
         } else {
-            $bouteilleSAQ = Bouteille::where('nom', $request->nom)->first();
+            $bouteilleSAQ = BouteilleSaq::where('nom', $request->nom)->first();
 
             $request->validate([
                 'nom' => 'required',
@@ -126,7 +124,7 @@ class BouteilleController extends Controller
                 'quantite' => 'required|numeric'
             ]);
 
-            $bouteilleUSER = BouteilleCellier::create(
+            $bouteilleUSER = Bouteille::create(
                 [
                     'bouteille_id' => $bouteilleSAQ->id,
                     'cellier_id' => $request->id,
@@ -190,7 +188,7 @@ class BouteilleController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        BouteilleCellier::where('id', $request->idBouteille)->delete();
+        Bouteille::where('id', $request->idBouteille)->delete();
         return redirect()->route('celliers.show', $id);
     }
 }
