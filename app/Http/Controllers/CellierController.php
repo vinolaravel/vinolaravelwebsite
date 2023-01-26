@@ -6,7 +6,6 @@ use App\Models\User;
 use App\Models\Cellier;
 use App\Models\Bouteille;
 use Illuminate\Http\Request;
-use App\Models\BouteilleCellier;
 
 class CellierController extends Controller
 {
@@ -20,7 +19,7 @@ class CellierController extends Controller
         $celliers = Cellier::where('user_id', auth()->user()->id)->get();
 
         foreach ($celliers as $cellier) {
-            $cellier->nbBouteilles = BouteilleCellier::where('cellier_id', $cellier->id)->sum('quantite');
+            $cellier->nbBouteilles = Bouteille::where('cellier_id', $cellier->id)->sum('quantite');
         }
 
         return view('celliers')->with('celliers', $celliers);
@@ -66,7 +65,7 @@ class CellierController extends Controller
     {
         $cellier = Cellier::findOrfail($id);
         // dd($cellier);
-        $bouteilles = BouteilleCellier::where('cellier_id', $id)->get();
+        $bouteilles = Bouteille::where('cellier_id', $id)->get();
         // dd($bouteilles);
         return view('uncellier')->with('cellier', $cellier)->with('bouteilles', $bouteilles);
     }
@@ -79,7 +78,7 @@ class CellierController extends Controller
      */
     public function detailsBouteille($id)
     {
-        $bouteille = BouteilleCellier::find($id);
+        $bouteille = Bouteille::find($id);
         return view('detailsBouteille')->with('bouteille', $bouteille);
     }
 

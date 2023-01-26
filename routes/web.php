@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CellierController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BouteilleController;
+use App\Http\Controllers\BouteilleSaqController;
 
 
 
@@ -25,14 +26,17 @@ Route::middleware('auth')->group(function () {
 
 
     Route::get('/celliers/{id}/bouteilles', [CellierController::class, 'show'])->name('celliers.show');
-    // ici
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+    Route::get('/celliers/{id}/bouteilles/{idBouteille}/edit', [BouteilleController::class, 'edit'])->name('bouteilles.edit');
+    Route::put('/celliers/{id}/bouteilles/{idBouteille}/update', [BouteilleController::class, 'update'])->name('bouteilles.update');
+    // @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
     Route::delete('/celliers/{id}/bouteilles/{idBouteille}', [BouteilleController::class, 'destroy'])->name('bouteilles.remove');
     Route::get('/celliers/{id}/bouteilles/createBouteille', [BouteilleController::class, 'create'])->name('bouteilles.create');
     Route::post('/celliers/{id}/bouteilles/storeBouteille', [BouteilleController::class, 'store'])->name('bouteilles.store');
     Route::get('/celliers/{id}/bouteilles/{idbouteille}', [CellierController::class, 'detailsBouteille'])->name('celliers.detailsBouteille');
     Route::post('/celliers/{id}/bouteilles/add/{idBouteille}', [BouteilleController::class, 'addBouteille'])->name('bouteilles.add');
     Route::post('/celliers/{id}/bouteilles/drink/{idBouteille}', [BouteilleController::class, 'drinkBouteille'])->name('bouteilles.drink');
-    Route::get('/updateSAQ', [BouteilleController::class, 'updateSAQ'])->name('updateSAQ');
+    Route::get('/updateSAQ', [BouteilleSaqController::class, 'updateSAQ'])->name('updateSAQ');
 
 
 

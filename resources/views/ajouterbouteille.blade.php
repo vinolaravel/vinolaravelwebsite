@@ -71,8 +71,8 @@
             <div>
                 <label for="type">Type</label>
                 <select name="type_id" id="type">
-                    <option value="1">Vin Blanc</option>
-                    <option value="2">Vin Rouge</option>
+                    <option value="1">Vin blanc</option>
+                    <option value="2">Vin rouge</option>
                 </select>
             </div>
 
@@ -93,7 +93,13 @@
 
             <div>
                 <label for="format">Format</label>
-                <input type="number" name="format" id="format" {{-- placeholder="ml" --}} maxlength="4">
+                <select name="format_id" id="format">
+                    <option value="750ml">750 ml</option>
+                    <option value="1000ml">1000 ml</option>
+                    <option value="1250ml">1250 ml</option>
+                    <option value="1500ml">1500 ml</option>
+
+                </select>
             </div>
 
             <div>

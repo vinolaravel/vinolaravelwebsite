@@ -18,4 +18,9 @@ class Type extends Model
     {
         return $this->hasMany(Bouteille::class);
     }
+
+    public function bouteillesSaq()
+    {
+        return $this->hasMany(BouteilleSaq::class);
+    }
 }

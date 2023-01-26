@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Goutte\Client;
-use App\Models\Type;
 // use Illuminate\Support\Facades\Http;
 use App\Models\Cellier;
 use App\Models\Bouteille;
+use App\Models\BouteilleSaq;
 use Illuminate\Http\Request;
-use App\Models\BouteilleCellier;
+use Illuminate\Support\Facades\DB;
 
 
 class BouteilleController extends Controller
@@ -20,40 +19,8 @@ class BouteilleController extends Controller
      */
     public function index(Request $request)
     {
-        $bouteilles = BouteilleCellier::all();
+        $bouteilles = Bouteille::all();
         return view('bouteilles', compact('bouteilles'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function updateSAQ(Client $client, $nombre = 24, $page = 1, $type = 'blanc')
-    {
-        $crawler = $client->request('GET', "https://www.saq.com/fr/produits/vin/vin-" . $type . "?p=" . $page . "&product_list_limit=" . $nombre . "&product_list_order=name_asc")->filter('.product-item')->each(function ($node) {
-            $type = Type::firstOrCreate(['type' => trim(explode("|", $node->filter('.product-item-identity-format span')->text())[0]) == "Vin rouge" ? "Rouge" : "Blanc"]);
-            return [
-                'nom' => $node->filter('.product-item-link')->text(),
-                'image' => $node->filter('.product-image-photo')->attr('src'),
-                "code_saq" => $node->filter('.saq-code span')->eq(1)->text(),
-                "pays" => trim(explode("|", $node->filter('.product-item-identity-format span')->text())[2]),
-                "description" => $node->filter('.product-item-identity-format span')->text(),
-                'prix_saq' => floatval(preg_replace('/,/', '.', $node->filter('.price')->text())),
-                'url_saq' => $node->filter('.product-item-link')->attr('href'),
-                'url_image' => $node->filter('.product-image-photo')->attr('src'),
-                'format' => trim(explode("|", $node->filter('.product-item-identity-format span')->text())[1]),
-                'type_id' => $type->id
-            ];
-        });
-
-        $bouteilles = collect($crawler);
-
-        foreach ($bouteilles as $bouteille) {
-            Bouteille::create($bouteille);
-        }
-
-        return redirect('celliers');
     }
 
     /**
@@ -63,7 +30,7 @@ class BouteilleController extends Controller
      */
     public function addBouteille(Request $request, $id)
     {
-        $bouteille = BouteilleCellier::findOrfail($request->idBouteille);
+        $bouteille = Bouteille::findOrfail($request->idBouteille);
         $bouteille->quantite = $bouteille->quantite + 1;
         $bouteille->save();
         return redirect()->route('celliers.show', $id);
@@ -76,7 +43,7 @@ class BouteilleController extends Controller
      */
     public function drinkBouteille(Request $request, $id)
     {
-        $bouteille = BouteilleCellier::findOrfail($request->idBouteille);
+        $bouteille = Bouteille::findOrfail($request->idBouteille);
         $bouteille->quantite = $bouteille->quantite - 1;
         $bouteille->save();
 
@@ -94,7 +61,7 @@ class BouteilleController extends Controller
      */
     public function create(Request $request, $id)
     {
-        $bouteilles = Bouteille::all();
+        $bouteilles = BouteilleSaq::all();
         $cellier = Cellier::where('id', $id)->first();
         return view('ajouterbouteille')->with('cellier', $cellier)->with('bouteilles', $bouteilles);
     }
@@ -108,13 +75,12 @@ class BouteilleController extends Controller
      */
     public function store(Request $request)
     {
-        $image = $request->file('image');
-        $fileName = $image->getClientOriginalName();
-        $uploaded = $image->move(public_path('images'), $image->getClientOriginalName());
-
-        // dd($wholePath);
         if (isset($request->pays)) {
-            $valide = $request->validate([
+            $image = $request->file('image');
+            $fileName = $image->getClientOriginalName();
+            $image->move(public_path('images'), $image->getClientOriginalName());
+
+            $request->validate([
                 'nom' => 'required | max:100',
                 // 'image' => 'required | image | mimes:jpeg,jpg,png | max:1000',
                 'pays' => 'required | max:50',
@@ -129,9 +95,8 @@ class BouteilleController extends Controller
             ]);
 
 
-            $ok = BouteilleCellier::create([
+            Bouteille::create([
                 'cellier_id' => $request->id,
-                'bouteille_id' => DB::table('bouteille_celliers')->max('bouteille_id') + 1,
                 'nom' => $request->nom,
                 'image' => $fileName,
                 'pays' => $request->pays,
@@ -145,11 +110,9 @@ class BouteilleController extends Controller
                 'description' => $request->description,
             ]);
 
-            // dd($ok);
-
             return redirect()->route('celliers.show', $request->id);
         } else {
-            $bouteilleSAQ = Bouteille::where('nom', $request->nom)->first();
+            $bouteilleSAQ = BouteilleSaq::where('nom', $request->nom)->first();
 
             $request->validate([
                 'nom' => 'required',
@@ -158,9 +121,8 @@ class BouteilleController extends Controller
                 'quantite' => 'required|numeric'
             ]);
 
-            $bouteilleUSER = BouteilleCellier::create(
+            $bouteilleUSER = Bouteille::create(
                 [
-                    'bouteille_id' => $bouteilleSAQ->id,
                     'cellier_id' => $request->id,
                     'nom' => $bouteilleSAQ->nom,
                     'image' => $bouteilleSAQ->image,
@@ -222,7 +184,7 @@ class BouteilleController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        BouteilleCellier::where('id', $request->idBouteille)->delete();
+        Bouteille::where('id', $request->idBouteille)->delete();
         return redirect()->route('celliers.show', $id);
     }
 }
