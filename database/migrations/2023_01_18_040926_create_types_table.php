@@ -16,14 +16,18 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        DB::table('types')->insert([
+
+        // j'ai mis le code en commentaire pour ne pas avoir de doublons dans la table puisque les types de vin sont mis dans la table dès l'importation des bouteilles de la SAQ
+
+        // ne pas mettre pour éviter les doublons
+        /* DB::table('types')->insert([
             [
                 'type' => 'Vin blanc'
             ],
             [
                 'type' => 'Vin rouge'
             ]
-        ]);
+        ]); */
     }
 
     public function down()
