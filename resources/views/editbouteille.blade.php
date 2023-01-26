@@ -4,9 +4,11 @@
         @csrf
         @method('PUT')
         
-        <div>
-            <img src="{{ $bouteille->image }}" alt="{{old('nom', $bouteille->nom)}}">
-        </div>
+        @if (substr($bouteille->image, 0, 8) == 'https://')
+                <img src="{{ $bouteille->image }}" alt="{{ $bouteille->nom }}" width="200px">
+            @else
+                <img src="{{ asset('images/' . $bouteille->image) }}" alt="{{ $bouteille->nom }}" width="200px">
+            @endif
 
         <div>
             <label for="nom">Nom de la bouteille</label>
@@ -21,7 +23,7 @@
 
         <div>
             <label for="prix_achat">Prix d'achat de la bouteille</label>
-            <input type="text" class="form-control" name="prix_achat" id="prix_achat" value="{{old('prix_achat', $bouteille->prix_achat)}}">
+            <input type="text" name="prix_achat" id="prix_achat" value="{{old('prix_achat', $bouteille->prix_achat)}}">
         </div>
 
         <div>
@@ -57,6 +59,6 @@
         </div>
 
 
-        <button type="submit" class="btn btn-primary">Appliquer</button>
+        <button type="submit">Appliquer</button>
     </form>
 </x-app-layout>
