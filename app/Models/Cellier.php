@@ -21,6 +21,6 @@ class Cellier extends Model
 
     public function bouteilles()
     {
-        return $this->belongsToMany(Bouteille::class);
+        return $this->hasMany(Bouteille::class);
     }
 }
