@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Goutte\Client;
 use App\Models\Type;
+use App\Models\BouteilleSaq;
+use Illuminate\Http\Request;
 
 
 class BouteilleSaqController extends Controller
@@ -45,7 +46,7 @@ class BouteilleSaqController extends Controller
         $bouteilles = collect($crawler);
 
         foreach ($bouteilles as $bouteille) {
-            Bouteille::create($bouteille);
+            BouteilleSaq::create($bouteille);
         }
 
         return redirect('celliers');
