@@ -1,15 +1,17 @@
 <x-app-layout>
-    <h1><b>nom du cellier:</b> {{ $cellier->nom }}</h1>
+    <h1><b><u>Cellier:</u></b> {{ $cellier->nom }}</h1>
     @forelse ($bouteilles as $bouteille)
         <div class="carteCatalogue">
-            <h1><b>Nom du cellier:</b> {{ $cellier->nom }}</h1>
             @if (substr($bouteille->image, 0, 8) == 'https://')
                 <img src="{{ $bouteille->image }}" alt="{{ $bouteille->nom }}">
             @else
                 <img src="{{ asset('images/' . $bouteille->image) }}" alt="{{ $bouteille->nom }}">
             @endif
-            <h2><b>nom de la bouteille:</b> {{ $bouteille->nom }}</h2>
-            <h3><b>quantite:</b> {{ $bouteille->quantite }}</h3>
+            <h2>{{ $bouteille->nom }}</h2>
+            <h3><b>quantité:</b> {{ $bouteille->quantite }}</h3>
+            <span>Vin {{ $bouteille->type->type }} | {{ $bouteille->format }} | {{ $bouteille->pays }}</span><br>
+            <span><b>Prix d'achat:</b> {{ $bouteille->prix_achat }}$</span><br>
+            <span><b>Achetée le:</b> {{ $bouteille->date_achat }}</span>
         </div>
 
         <div class="options">

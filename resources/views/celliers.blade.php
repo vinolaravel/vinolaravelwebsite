@@ -1,7 +1,7 @@
 <x-app-layout>
     @forelse ($celliers as $cellier)
         <div class="cellier">
-            <h2>{{ $cellier->nom }}</h2>
+            <span class="nomCellier">{{ $cellier->nom }}</span>
             @if ($cellier->nbBouteilles == 0)
                 <h3>Ce cellier est vide!</h3>                
             @endif
@@ -15,14 +15,14 @@
             @endif
             <a href="{{ route('celliers.show', $cellier->id) }}">Voir le contenu du cellier</a>
 
-            <form action="{{ route('celliers.destroy', $cellier->id) }}" method="post">
+            <form action="{{ route('celliers.destroy', $cellier->id) }}" method="post" class="petitForm">
                 @csrf
                 @method('DELETE')
-                <button type="submit">Supprimer</button>
+                <button type="submit" class="myButton">Supprimer</button>
             </form>
 
             <a href="{{ route('celliers.edit', $cellier->id) }}">
-                <button>Modifier</button>
+                <button class="myButton">Modifier</button>
             </a>
         </div>
     @empty

@@ -12,23 +12,31 @@ header{
     min-height: 150px;
 }
 
-
 .logo {
-    width: 50px;
-    height: 50px;
+    width: 100px;
+    height: 100px;
+    transition: transform 0.3s ease-in-out;
 }
 
+.logo:hover {
+    transform: scale(1.1);
+}
 
-.nav-links {
+.nomCellier {
+    display: inline-block;
+    font-size: 36pt;
+    text-decoration: underline;
+}
+
+.nav_links {
     display: flex;
     justify-content: space-between;
     color: #fff; 
     margin-left: auto;
     margin-bottom: 10px; 
-  
 }
 
-.nav-links a {  
+.nav_links a {  
     display: block;
     padding: 10px 20px;
     color: #fff; 
@@ -38,8 +46,13 @@ header{
     text-transform: uppercase;
 }
 
+.petitForm {
+    width: 145px;
+    margin: auto;
+    text-align: center;
+}
 
-.nav-links a:before {
+.nav_links a:before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -50,31 +63,33 @@ header{
     transition: all 0.5s ease-in-out;
 }
 
-.nav-links a:hover:before {
+.nav_links a:hover:before {
     width: 100%;
 }
-
-
 
 .settings-dropdown {
     margin-left: 20px;
 }
 
-
 .dropdown-button {
-  
     padding: 10px;
 }
 
-
-@media (max-width: 600px) {
-
+@media screen and (max-width: 740px) {
     .logo {
         width: 40px;
         height: 40px;
     }
+
     .settings-dropdown {
         margin-left: 0;
     }
- 
+
+    .nomCellier {
+        font-size: 24pt;
+    }
+
+    .cellier {
+        width: 100px;
+    }
 }
