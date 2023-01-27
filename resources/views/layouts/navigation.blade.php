@@ -9,7 +9,7 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="nav-links">
+                <div class="nav_links">
                     <x-nav-link :href="route('celliers')" :active="request()->routeIs('celliers')">
                         {{ __('celliers') }}
                     </x-nav-link>
