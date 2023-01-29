@@ -369,7 +369,7 @@
         
         <section id="newBouteille" style="display: none"></section>
 
-        <button type="submit" class="btn btn-primary">Ajouter</button>
+        <button type="submit" id="btnAjouter" style="display: none;">Ajouter</button>
     </form>
 </x-app-layout>
 
@@ -381,7 +381,8 @@
             saqBouteille = document.getElementById('saqBouteille'),
             newBouteille = document.getElementById('newBouteille'),
             saqTemplate = document.getElementById('saqTemplate'),
-            newBouteilleTemplate = document.getElementById('newBouteilleTemplate');
+            newBouteilleTemplate = document.getElementById('newBouteilleTemplate'),
+            btnAjouter = document.getElementById('btnAjouter');
             
         btnSAQ.addEventListener('click', function(){
             newBouteille.innerHTML = '';
@@ -390,6 +391,7 @@
             saqBouteille.style.display = 'block';
             btnSAQ.disabled = true;
             btnPerso.disabled = false;
+            btnAjouter.style.display = 'block';
         });
 
         btnPerso.addEventListener('click', function(){
@@ -399,6 +401,7 @@
             newBouteille.style.display = 'block';
             btnPerso.disabled = true;
             btnSAQ.disabled = false;
+            btnAjouter.style.display = 'block';
         });
     })()
 </script>
