@@ -5,6 +5,7 @@ use App\Http\Controllers\CellierController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\BouteilleController;
 use App\Http\Controllers\BouteilleSaqController;
+use App\Http\Controllers\ChercheBouteilleController;
 
 
 
@@ -40,6 +41,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/celliers/{id}/bouteilles/drink/{idBouteille}', [BouteilleController::class, 'drinkBouteille'])->name('bouteilles.drink');
     Route::get('/updateSAQ', [BouteilleSaqController::class, 'updateSAQ'])->name('updateSAQ');
 
+    // link for search
+    Route::get('/search', [ChercheBouteilleController::class, 'search'])->name('search');
 
 
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
