@@ -2,18 +2,19 @@
     <form action="{{ route('bouteilles.store', $cellier->id) }}" method="post" enctype="multipart/form-data">
         @csrf
 
-        <button id="btnSAQ">Choisir une bouteille de la SAQ</button>
+        <button id="btnSAQ" style="display: none;">Choisir une bouteille de la SAQ</button>
         <button id="btnPerso">Insérer une nouvelle bouteille (hors SAQ)</button>
         
-        <template id="saqTemplate">
-            <div id="divSelect">
+        <h1 id="titreSaq">Ajouter une bouteille de la SAQ</h1>
+        <h1 id="titreNew" style="display: none;">Ajouter une bouteille personnelle</h1>
+
+        <section id="saqSection">
+            <div class="rechercher">
                 <label for="nom">Nom de la bouteille</label>
-                <select name="nom" id="nomSelect">
-                    <option value="">--Choisissez une bouteille--</option>
-                    @foreach ($bouteilles as $bouteille)
-                        <option value="{{ $bouteille->nom }}">{{ $bouteille->nom }}</option>
-                    @endforeach
-                </select>
+                <input type="text" name="nom" id="nom" placeholder="Entrez le nom de la bouteille">
+                <ul class="listeAutoComplete">
+
+                </ul>
             </div>
 
             <div>
@@ -40,12 +41,12 @@
                 <label for="quantite">Quantite</label>
                 <input type="number" name="quantite" id="quantite" placeholder="Entrez la quantite">
             </div>
-        </template>        
+        </section>        
 
-        <template id="newBouteilleTemplate">
+        <template id="newBouteilleTemplate" style="display: none" disabled>
             <div>
                 <label for="nom">Nom de la bouteille</label>
-                <input type="text" name="nom" id="nom" placeholder="Entrez le nom de la bouteille">
+                <input type="text" name="nom" placeholder="Entrez le nom de la bouteille">
             </div>
 
             <div>
@@ -364,44 +365,65 @@
             </div>
         </template>
 
-
-        <div id="saqBouteille" style="display: none"></div>
-        
         <section id="newBouteille" style="display: none"></section>
 
-        <button type="submit" id="btnAjouter" style="display: none;">Ajouter</button>
+        <button type="submit" id="btnAjouter">Ajouter</button>
     </form>
 </x-app-layout>
 
 
 <script>
-    (function(){
         let btnSAQ = document.getElementById('btnSAQ'),
             btnPerso = document.getElementById('btnPerso'),
-            saqBouteille = document.getElementById('saqBouteille'),
             newBouteille = document.getElementById('newBouteille'),
-            saqTemplate = document.getElementById('saqTemplate'),
+            saqSection = document.getElementById('saqSection'),
             newBouteilleTemplate = document.getElementById('newBouteilleTemplate'),
-            btnAjouter = document.getElementById('btnAjouter');
+            btnAjouter = document.getElementById('btnAjouter'),
+            titreSaq = document.getElementById('titreSaq'),
+            titreNew = document.getElementById('titreNew');
             
-        btnSAQ.addEventListener('click', function(){
+        btnSAQ.addEventListener('click', function(e){
+            e.preventDefault();
             newBouteille.innerHTML = '';
-            let cloneSAQ = saqTemplate.content.cloneNode(true);
-            saqBouteille.appendChild(cloneSAQ);
-            saqBouteille.style.display = 'block';
-            btnSAQ.disabled = true;
-            btnPerso.disabled = false;
-            btnAjouter.style.display = 'block';
+            saqSection.style.display = 'block';
+            btnSAQ.style.display = 'none';
+            btnPerso.style.display = 'block';
+            titreSaq.style.display = 'block';
+            titreNew.style.display = 'none';
         });
 
-        btnPerso.addEventListener('click', function(){
-            saqBouteille.innerHTML = '';
+        btnPerso.addEventListener('click', function(e){
+            e.preventDefault();
+            saqSection.style.display = 'none';
             let cloneNewBouteille = newBouteilleTemplate.content.cloneNode(true);
             newBouteille.appendChild(cloneNewBouteille);
             newBouteille.style.display = 'block';
-            btnPerso.disabled = true;
-            btnSAQ.disabled = false;
-            btnAjouter.style.display = 'block';
+            btnPerso.style.display = 'none';
+            btnSAQ.style.display = 'block';
+            titreSaq.style.display = 'none';
+            titreNew.style.display = 'block';
         });
-    })()
+
+    document.querySelector("#nom").addEventListener("keyup", function(e) {
+        let input = e.target;
+        let nom = input.value;
+
+        fetch('/search?nom=' + nom)
+        .then(response => response.json())
+        .then(bouteilles => {
+            let listeAutoComplete = document.querySelector(".listeAutoComplete");
+            listeAutoComplete.innerHTML = "";
+            bouteilles.forEach(bouteille => {
+                listeAutoComplete.innerHTML += "<option>" + bouteille.nom + "</option>";
+            });
+        });
+    });
+
+    if (document.querySelector(".listeAutoComplete")) {
+        document.querySelector(".listeAutoComplete").addEventListener("click", function(e) {
+            let input = document.querySelector("#nom");
+            input.value = e.target.innerHTML;
+            document.querySelector(".listeAutoComplete").innerHTML = "";
+        });
+    }
 </script>
