@@ -20,7 +20,7 @@ class BouteilleController extends Controller
     public function index(Request $request)
     {
         $bouteilles = Bouteille::all();
-        return view('bouteilles', compact('bouteilles'));
+        return view('guest.bouteille.bouteilles', compact('bouteilles'));
     }
 
     /**
@@ -63,7 +63,7 @@ class BouteilleController extends Controller
     {
         $bouteilles = BouteilleSaq::all();
         $cellier = Cellier::where('id', $id)->first();
-        return view('ajouterbouteille')->with('cellier', $cellier)->with('bouteilles', $bouteilles);
+        return view('guest.bouteille.ajouterbouteille')->with('cellier', $cellier)->with('bouteilles', $bouteilles);
     }
 
 
@@ -163,7 +163,7 @@ class BouteilleController extends Controller
     {
         $bouteille = Bouteille::findOrFail($request->idBouteille);
         $cellier = Cellier::where('id', $id)->first();
-        return view('editbouteille')->with('bouteille', $bouteille)->with('cellier', $cellier);
+        return view('guest.bouteille.editbouteille')->with('bouteille', $bouteille)->with('cellier', $cellier);
     }
 
 

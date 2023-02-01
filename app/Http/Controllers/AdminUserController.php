@@ -20,7 +20,7 @@ class AdminUserController extends Controller
         }
         $users = User::where('role_id', 2)->get();
 
-        return view('usersadmin', compact('users'));
+        return view('admin.user.usersadmin', compact('users'));
     }
 
     /**
