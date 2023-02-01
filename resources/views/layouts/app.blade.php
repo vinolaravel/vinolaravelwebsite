@@ -11,15 +11,20 @@
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
         <!-- CSS-->
-        <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
-
+        @if (auth()->user()->role_id != 1)
+            <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
+        @endif
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
 
     <body>
         <div>
-            @include('layouts.navigation')
+            @if (auth()->user()->role_id == 1)
+                @include('layouts.navigationadmin')
+            @else
+                @include('layouts.navigation')
+            @endif
 
             <!-- Page Heading -->
             @if (isset($header))

@@ -1,19 +1,19 @@
-<nav x-data="{ open: false }" class="custom-nav">
+<nav x-data="{ open: false }" {{-- class="custom-nav" --}}>
     <!-- Primary Navigation Menu -->
   
                 <!-- Logo -->
-                <div class="logo">
+                {{-- <div class="logo">
                     <a href="{{ route('celliers') }}">
                         <img src="{{ asset('img/vin.svg') }}" alt="wineBottle">
                     </a>
-                </div>
+                </div> --}}
 
                 <!-- Navigation Links -->
                 <div class="nav_links">
-                    <x-nav-link :href="route('celliers')" :active="request()->routeIs('celliers')">
+                    {{-- <x-nav-link :href="route('celliers')" :active="request()->routeIs('celliers')" style="color: red;">
                         {{ __('celliers') }}
-                    </x-nav-link>
-                    {{-- <x-nav-link :href="route('celliers.create')" :active="request()->routeIs('celliers.create')">
+                    </x-nav-link> --}}
+                    {{-- <x-nav-link :href="route('celliers.create')" :active="request()->routeIs('celliers.create')" style="color: red;">
                         {{ __('Creer un cellier') }}
                     </x-nav-link> --}}
                 </div>

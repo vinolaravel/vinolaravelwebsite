@@ -16,7 +16,12 @@ class CellierController extends Controller
      */
     public function index()
     {
+        $user = User::find(auth()->user()->id);
         $celliers = Cellier::where('user_id', auth()->user()->id)->get();
+
+        if ($user->role_id == 1) {
+            return redirect('/admin');
+        }
 
         foreach ($celliers as $cellier) {
             $cellier->nbBouteilles = Bouteille::where('cellier_id', $cellier->id)->sum('quantite');
