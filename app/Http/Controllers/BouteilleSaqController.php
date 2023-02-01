@@ -49,7 +49,7 @@ class BouteilleSaqController extends Controller
             BouteilleSaq::create($bouteille);
         }
 
-        return redirect('celliers');
+        return redirect()->route('celliers');
     }
 
     /**

@@ -21,7 +21,7 @@ class AdminCellierController extends Controller
         }
         $celliers = Cellier::all();
 
-        return view('celliersadmin', compact('celliers'));
+        return view('admin.cellier.celliersadmin', compact('celliers'));
     }
 
     /**
@@ -58,7 +58,7 @@ class AdminCellierController extends Controller
         }
         $user = User::find($idUser);
         $celliers = $user->celliers;
-        return view('celliersadmin', compact('celliers', 'user'));
+        return view('admin.cellier.celliersadmin', compact('celliers', 'user'));
     }
 
     /**
@@ -74,7 +74,7 @@ class AdminCellierController extends Controller
         }
         $user = User::find($idUser);
         $cellier = $user->celliers->find($idCellier);
-        return view('editcellieradmin', compact('cellier', 'user'));
+        return view('admin.cellier.editcellieradmin', compact('cellier', 'user'));
     }
 
     /**

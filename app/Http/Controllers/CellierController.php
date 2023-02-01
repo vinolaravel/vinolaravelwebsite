@@ -27,7 +27,7 @@ class CellierController extends Controller
             $cellier->nbBouteilles = Bouteille::where('cellier_id', $cellier->id)->sum('quantite');
         }
 
-        return view('celliers')->with('celliers', $celliers);
+        return view('guest.cellier.celliers')->with('celliers', $celliers);
     }
 
     /**
@@ -37,7 +37,7 @@ class CellierController extends Controller
      */
     public function create()
     {
-        return view('ajoutercellier');
+        return view('guest.cellier.ajoutercellier');
     }
 
     /**
@@ -72,7 +72,7 @@ class CellierController extends Controller
         // dd($cellier);
         $bouteilles = Bouteille::where('cellier_id', $id)->get();
         // dd($bouteilles);
-        return view('uncellier')->with('cellier', $cellier)->with('bouteilles', $bouteilles);
+        return view('guest.cellier.uncellier')->with('cellier', $cellier)->with('bouteilles', $bouteilles);
     }
 
     /**
@@ -96,7 +96,7 @@ class CellierController extends Controller
     public function edit($id)
     {
         $cellier = Cellier::findOrfail($id);
-        return view('editcellier')->with('cellier', $cellier);
+        return view('guest.cellier.editcellier')->with('cellier', $cellier);
     }
 
     /**

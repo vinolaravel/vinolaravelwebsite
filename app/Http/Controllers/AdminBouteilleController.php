@@ -20,7 +20,7 @@ class AdminBouteilleController extends Controller
         }
         $bouteilles = Bouteille::all();
 
-        return view('bouteillesadmin', compact('bouteilles'));
+        return view('admin.bouteille.bouteillesadmin', compact('bouteilles'));
     }
 
     /**
