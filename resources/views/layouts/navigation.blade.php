@@ -13,9 +13,9 @@
                     <x-nav-link :href="route('celliers')" :active="request()->routeIs('celliers')">
                         {{ __('celliers') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('celliers.create')" :active="request()->routeIs('celliers.create')">
+                    {{-- <x-nav-link :href="route('celliers.create')" :active="request()->routeIs('celliers.create')">
                         {{ __('Creer un cellier') }}
-                    </x-nav-link>
+                    </x-nav-link> --}}
                 </div>
            
 
@@ -30,7 +30,7 @@
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profileeee') }}
+                            {{ __('Profile') }}
                         </x-dropdown-link>
 
                         <!-- Authentication -->

@@ -25,8 +25,9 @@
                 <button class="myButton">Modifier</button>
             </a>
         </div>
-    @empty
-        <p>Aucun cellier disponible</p>
-        <a href="{{ route('celliers.create', auth()->user()->id) }}">Cliquez ici pour créer un nouveau cellier</a>
-    @endforelse
+        @empty
+            <p>Aucun cellier disponible</p>
+            <a href="{{ route('celliers.create', auth()->user()->id) }}">Créer un cellier</a>
+        @endforelse
+            <a href="{{ route('celliers.create', auth()->user()->id) }}">Créer un nouveau cellier</a>
 </x-app-layout>
