@@ -1,7 +1,7 @@
 <x-app-layout>
     <section class="form">
         <h5 class="form-title">Editer un cellier</h5><br>
-        <form action="{{ route('admin.updateCellier', [$cellier->id, $user->id]) }}" method="post">
+        <form action="{{ route('admin.updateCellier', [$user->id, $cellier->id]) }}" method="post">
             @csrf
             @method('PUT')
             <div class="form-group">

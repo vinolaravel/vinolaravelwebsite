@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Cellier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Pagination\Paginator;
+
 
 class AdminCellierController extends Controller
 {
@@ -19,10 +21,29 @@ class AdminCellierController extends Controller
         if (!Gate::allows('admin')) {
             abort(403);
         }
-        $celliers = Cellier::all();
+        $celliers = Cellier::paginate(10);
 
         return view('admin.cellier.celliersadmin', compact('celliers'));
     }
+
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function voirContenu(Request $request, $idUser, $idCellier)
+    {
+        if (!Gate::allows('admin')) {
+            abort(403);
+        }
+        $user = User::find($idUser);
+        $cellier = $user->celliers->find($idCellier);
+        $bouteilles = $cellier->bouteilles()->paginate(10);
+        return view('admin.cellier.contenuCellier', compact('bouteilles', 'cellier', 'user'));
+    }
+
 
     /**
      * Show the form for creating a new resource.
@@ -57,7 +78,7 @@ class AdminCellierController extends Controller
             abort(403);
         }
         $user = User::find($idUser);
-        $celliers = $user->celliers;
+        $celliers = Cellier::where('user_id', $idUser)->paginate(10);
         return view('admin.cellier.celliersadmin', compact('celliers', 'user'));
     }
 
@@ -84,15 +105,17 @@ class AdminCellierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $idCellier, $idUser)
+    public function update(Request $request, $idUser, $idCellier)
     {
         if (!Gate::allows('admin')) {
             abort(403);
         }
-        $user = User::find($idUser);
-        $cellier = $user->celliers->find($idCellier);
-        $cellier->nom = $request->nom;
-        $cellier->save();
+
+        Cellier::where('id', $idCellier)
+            ->update([
+                'nom' => $request->nom
+            ]);
+
         return redirect()->route('admin.afficheCelliers', ['idUser' => $idUser]);
     }
 

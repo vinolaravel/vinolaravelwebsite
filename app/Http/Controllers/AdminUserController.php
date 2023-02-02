@@ -6,6 +6,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 
+
 class AdminUserController extends Controller
 {
     /**
@@ -18,7 +19,7 @@ class AdminUserController extends Controller
         if (!Gate::allows('admin')) {
             abort(403);
         }
-        $users = User::where('role_id', 2)->get();
+        $users = User::where('role_id', 2)->paginate(10);
 
         return view('admin.user.usersadmin', compact('users'));
     }
@@ -90,6 +91,6 @@ class AdminUserController extends Controller
 
         $user->delete();
 
-        return redirect()->route('admin.user');
+        return redirect()->route('admin.users');
     }
 }

@@ -11,7 +11,6 @@
         {{-- <a href="{{ route('listecelliers') }}">Voir les celliers</a> --}}
         <x-app-layout>
         <a href="{{ route('admin.users') }}">Utilisateurs</a><br>
-        <a href="{{ route('admin.bouteilles') }}">Bouteilles</a><br>
         <a href="{{ route('admin.celliers') }}">Celliers</a>
         </x-app-layout>
 {{--     </body>

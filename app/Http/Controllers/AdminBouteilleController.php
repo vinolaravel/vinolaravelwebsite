@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Bouteille;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Pagination\Paginator;
 
 class AdminBouteilleController extends Controller
 {
@@ -18,7 +19,7 @@ class AdminBouteilleController extends Controller
         if (!Gate::allows('admin')) {
             abort(403);
         }
-        $bouteilles = Bouteille::all();
+        $bouteilles = Bouteille::paginate(10);
 
         return view('admin.bouteille.bouteillesadmin', compact('bouteilles'));
     }
