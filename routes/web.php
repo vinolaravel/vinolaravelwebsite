@@ -42,13 +42,13 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin', [AdminController::class, 'index'])->name('admin');
     Route::get('/admin/celliers', [AdminCellierController::class, 'index'])->name('admin.celliers');
-    Route::get('/admin/bouteilles', [AdminBouteilleController::class, 'index'])->name('admin.bouteilles');
     Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users');
-    Route::get('/admin/users/{idUser}', [AdminCellierController::class, 'show'])->name('admin.afficheCelliers');
+    Route::get('/admin/users/{idUser}/celliers', [AdminCellierController::class, 'show'])->name('admin.afficheCelliers');
     Route::delete('/admin/users/{idUser}', [AdminUserController::class, 'destroy'])->name('admin.userDelete');
-    Route::get('/admin/users/{idUser}/{idCellier}/change', [AdminCellierController::class, 'edit'])->name('admin.editCellier');
-    Route::put('/admin/users/{idUser}/{idCellier}', [AdminCellierController::class, 'update'])->name('admin.updateCellier');
-    Route::delete('/admin/users/{idUser}/{idCellier}', [AdminCellierController::class, 'destroy'])->name('admin.cellierDelete');
+    Route::get('/admin/users/{idUser}/celliers/{idCellier}/change', [AdminCellierController::class, 'edit'])->name('admin.editCellier');
+    Route::put('/admin/users/{idUser}/celliers/{idCellier}', [AdminCellierController::class, 'update'])->name('admin.updateCellier');
+    Route::delete('/admin/users/{idUser}/celliers/{idCellier}', [AdminCellierController::class, 'destroy'])->name('admin.cellierDelete');
+    Route::get('/admin/users/{idUser}/celliers/{idCellier}/details', [AdminCellierController::class, 'voirContenu'])->name('admin.voirContenuCellier');
 
 
 
