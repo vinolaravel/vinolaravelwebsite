@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Pagination\Paginator;
+
 
 class AdminUserController extends Controller
 {
@@ -18,7 +20,7 @@ class AdminUserController extends Controller
         if (!Gate::allows('admin')) {
             abort(403);
         }
-        $users = User::where('role_id', 2)->get();
+        $users = User::where('role_id', 2)->paginate(10);
 
         return view('admin.user.usersadmin', compact('users'));
     }

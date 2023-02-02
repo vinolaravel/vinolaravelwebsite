@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Cellier;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Pagination\Paginator;
+
 
 class AdminCellierController extends Controller
 {
@@ -19,7 +21,7 @@ class AdminCellierController extends Controller
         if (!Gate::allows('admin')) {
             abort(403);
         }
-        $celliers = Cellier::all();
+        $celliers = Cellier::paginate(10);
 
         return view('admin.cellier.celliersadmin', compact('celliers'));
     }

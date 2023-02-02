@@ -36,4 +36,5 @@
     @else
         Aucune bouteille disponible
     @endif
+    {{  $bouteilles->links()  }}
 </x-app-layout>

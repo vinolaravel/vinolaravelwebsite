@@ -44,4 +44,5 @@
     @else
         Aucun utilisateur disponible
     @endif
+    {{  $users->links()  }}
 </x-app-layout>

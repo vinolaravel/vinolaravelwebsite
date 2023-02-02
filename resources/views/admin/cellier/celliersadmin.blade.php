@@ -32,4 +32,5 @@
     @else
         Aucun cellier disponible
     @endif
+    {{  $celliers->links()  }}
 </x-app-layout>
