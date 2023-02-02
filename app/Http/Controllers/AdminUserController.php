@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Pagination\Paginator;
 
 
 class AdminUserController extends Controller
@@ -92,6 +91,6 @@ class AdminUserController extends Controller
 
         $user->delete();
 
-        return redirect()->route('admin.user');
+        return redirect()->route('admin.users');
     }
 }
