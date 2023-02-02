@@ -1,6 +1,6 @@
 <x-app-layout>
     @if ($celliers->count() > 0)
-    <table>
+    <table id="example" class="table table-striped" style="width:100%">
         <tr>
             <th>Nom</th>
             <th>Nom d'utilisateur</th>
@@ -17,20 +17,36 @@
                 <td>{{ $cellier->user->created_at }}</td>
                 <td>{{ $cellier->bouteilles->count() }}</td>
                 <td>
-                    <form action="{{ route('admin.cellierDelete', [$user->id, $cellier->id]) }}" method="post">
+                    <form action="{{ route('admin.cellierDelete', [$cellier->user->id, $cellier->id]) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="supprimer cellier">
                     </form>
-                    <a href="{{ route('admin.editCellier', [$user->id, $cellier->id]) }}">
+                    <a href="{{ route('admin.editCellier', [$cellier->user->id, $cellier->id]) }}">
                         <button class="myButton">Modifier</button>
+                    </a>
+                    <a href="{{ route('admin.voirContenuCellier', [$cellier->user->id, $cellier->id]) }}">
+                        <button class="myButton">Détails</button>
                     </a>
                 </td>
             </tr>
         @endforeach
     </table>
     @else
-        Aucun cellier disponible
+        Aucun cellier disponible 
     @endif
-    {{  $celliers->links()  }}
+        {{  $celliers->links()  }}
 </x-app-layout>
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    function deleteCellier(id) {
+        if (confirm('Voulez-vous vraiment supprimer ce cellier?')) {
+            document.getElementById('delete-form-' + id).submit();
+        }
+    }
+
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>

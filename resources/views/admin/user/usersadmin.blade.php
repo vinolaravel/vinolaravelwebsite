@@ -1,6 +1,6 @@
 <x-app-layout>
     @if ($users->count() > 0)
-    <table>
+    <table id="example" class="table table-striped" style="width:100%">
         <tr>
             <th>Nom</th>
             <th>Email</th>
@@ -13,31 +13,13 @@
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->celliers->count() }} </td>
                 <td>
-                    <a href="{{ route('admin.afficheCelliers', $user->id) }}">Voir celliers</a>
+                    <a href="{{ route('admin.afficheCelliers', $user->id) }}">Voir les celliers</a>
                     <form action="{{ route('admin.userDelete', $user->id) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <input type="submit" value="supprimer user">
                     </form>
                 </td>
-
-                {{-- <td>
-                    <form action="{{ route('celliers.destroy', $cellier->id) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Supprimer</button>
-                    </form>
-                </td>
-                <td>
-                    <a href="{{ route('celliers.edit', $cellier->id) }}">
-                        <button>Modifier</button>
-                    </a>
-                </td>
-                <td>
-                    <a href="{{ route('celliers.show', $cellier->id) }}">
-                        <button>Voir le contenu du cellier</button>
-                    </a>
-                </td> --}}
             </tr>
         @endforeach
     </table>
@@ -46,3 +28,17 @@
     @endif
     {{  $users->links()  }}
 </x-app-layout>
+{{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
+<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
+<script>
+    function deleteCellier(id) {
+        if (confirm('Voulez-vous vraiment supprimer ce cellier?')) {
+            document.getElementById('delete-form-' + id).submit();
+        }
+    }
+
+    $(document).ready(function () {
+        $('#example').DataTable();
+    });
+</script>
