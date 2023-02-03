@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-// use Illuminate\Support\Facades\Http;
 use App\Models\Cellier;
 use App\Models\Bouteille;
 use App\Models\BouteilleSaq;
@@ -66,7 +65,6 @@ class BouteilleController extends Controller
         return view('guest.bouteille.ajouterbouteille')->with('cellier', $cellier)->with('bouteilles', $bouteilles);
     }
 
-
     /**
      * Store a newly created resource in storage.
      *
@@ -77,7 +75,6 @@ class BouteilleController extends Controller
     {
         if (isset($request->pays)) {
             $image = $request->file('image');
-            // add the current timestamp to the file name
             $fileName = time() . '_' . $image->getClientOriginalName();
             $image->move(public_path('images'), $fileName);
 
@@ -91,7 +88,7 @@ class BouteilleController extends Controller
                 'quantite' => 'required | numeric',
                 'millesime' => 'required',
                 'garde_jusqua' => 'required',
-                'format' => 'required', // | regex:/^[0-9]{2,4}$/
+                'format' => 'required',
                 'description' => 'required | max:200'
             ]);
 
@@ -178,7 +175,6 @@ class BouteilleController extends Controller
     public function update(Request $request, $id)
     {
         $bouteille = Bouteille::findOrfail($request->idBouteille)->first();
-        // dd($bouteille);
         $request->validate([
             'nom' => 'required',
             'pays' => 'required',
