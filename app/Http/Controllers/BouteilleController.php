@@ -74,9 +74,13 @@ class BouteilleController extends Controller
     public function store(Request $request)
     {
         if (isset($request->pays)) {
-            $image = $request->file('image');
-            $fileName = time() . '_' . $image->getClientOriginalName();
-            $image->move(public_path('images'), $fileName);
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $fileName = time() . '_' . $image->getClientOriginalName();
+                $image->move(public_path('images'), $fileName);
+            } else {
+                $fileName = 'default.jpg';
+            }
 
             $request->validate([
                 'nom' => 'required | max:100',
