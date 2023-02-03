@@ -77,8 +77,9 @@ class BouteilleController extends Controller
     {
         if (isset($request->pays)) {
             $image = $request->file('image');
-            $fileName = $image->getClientOriginalName();
-            $image->move(public_path('images'), $image->getClientOriginalName());
+            // add the current timestamp to the file name
+            $fileName = time() . '_' . $image->getClientOriginalName();
+            $image->move(public_path('images'), $fileName);
 
             $request->validate([
                 'nom' => 'required | max:100',
@@ -203,7 +204,14 @@ class BouteilleController extends Controller
      */
     public function destroy(Request $request, $id)
     {
-        Bouteille::where('id', $request->idBouteille)->delete();
+        $bouteille = Bouteille::where('id', $request->idBouteille)->first();
+
+        if (substr($bouteille->image, 0, 19) != 'https://www.saq.com') {
+            $image_path = public_path('images/' . $bouteille->image);
+            unlink($image_path);
+        }
+
+        $bouteille->delete();
         return redirect()->route('celliers.show', $id);
     }
 }
