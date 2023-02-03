@@ -1,9 +1,11 @@
 <x-app-layout>
+    <h1>Users</h1>
     @if ($users->count() > 0)
     <table id="example" class="table table-striped" style="width:100%">
         <tr>
             <th>Nom</th>
             <th>Email</th>
+            <th>Date d'inscription</th>
             <th>Nombre de celliers</th>
             <th>Actions</th>
         </tr>
@@ -11,6 +13,7 @@
             <tr>
                 <td>{{ $user->name }}</td>
                 <td>{{ $user->email }}</td>
+                <td>{{ $user->created_at->format('d-m-Y') }}</td>
                 <td>{{ $user->celliers->count() }} </td>
                 <td>
                     <a href="{{ route('admin.afficheCelliers', $user->id) }}">Voir les celliers</a>
