@@ -45,8 +45,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/admin/users', [AdminUserController::class, 'index'])->name('admin.users');
     Route::get('/admin/users/{idUser}/celliers', [AdminCellierController::class, 'show'])->name('admin.afficheCelliers');
     Route::delete('/admin/users/{idUser}', [AdminUserController::class, 'destroy'])->name('admin.userDelete');
-    Route::get('/admin/users/{idUser}/celliers/{idCellier}/change', [AdminCellierController::class, 'edit'])->name('admin.editCellier');
-    Route::put('/admin/users/{idUser}/celliers/{idCellier}', [AdminCellierController::class, 'update'])->name('admin.updateCellier');
+    // Route::get('/admin/users/{idUser}/celliers/{idCellier}/change', [AdminCellierController::class, 'edit'])->name('admin.editCellier');
+    // Route::put('/admin/users/{idUser}/celliers/{idCellier}', [AdminCellierController::class, 'update'])->name('admin.updateCellier');
     Route::delete('/admin/users/{idUser}/celliers/{idCellier}', [AdminCellierController::class, 'destroy'])->name('admin.cellierDelete');
     Route::get('/admin/users/{idUser}/celliers/{idCellier}/details', [AdminCellierController::class, 'voirContenu'])->name('admin.voirContenuCellier');
 
