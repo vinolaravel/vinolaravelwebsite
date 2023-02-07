@@ -83,19 +83,15 @@ class BouteilleController extends Controller
             }
 
             $request->validate([
-                'nom' => 'required | max:100',
-                // 'image' => 'required | image | mimes:jpeg,jpg,png | max:1000',
-                'pays' => 'required | max:50',
-                'date_achat' => 'required',
-                'prix_achat' => 'required | numeric | min:0',
-                'type_id' => 'required',
-                'quantite' => 'required | numeric',
-                'millesime' => 'required',
-                'garde_jusqua' => 'required',
-                'format' => 'required',
-                'description' => 'required | max:200'
+                'nom' => 'required|max:100',
+                'image' => ['required', 'mimes:jpeg,jpg,png', 'max:3000'],
+                'date_achat' => 'required|date|before:today',
+                'prix_achat' => 'required|min:0',
+                'quantite' => 'required|numeric|min:1',
+                'millesime' => 'required|regex:/^[1-2][0-9]{3}$/|before:' . date('Y'),
+                'garde_jusqua' => 'required|date|after_or_equal:' . date('Y'),
+                'description' => 'required|min:10|max:200'
             ]);
-
 
             Bouteille::create([
                 'cellier_id' => $request->id,
@@ -119,11 +115,13 @@ class BouteilleController extends Controller
             $request->validate([
                 'nom' => 'required',
                 'prix_achat' => 'required|numeric',
-                'millesime' => 'required|numeric',
-                'quantite' => 'required|numeric'
+                'date_achat' => 'required|date|before:today',
+                'millesime' => 'required|regex:/^[1-2][0-9]{3}$/|before:' . date('Y'),
+                'garde_jusqua' => 'required|date|after_or_equal:' . date('Y'),
+                'quantite' => 'required|numeric|min:1'
             ]);
 
-            $bouteilleUSER = Bouteille::create(
+            Bouteille::create(
                 [
                     'cellier_id' => $request->id,
                     'nom' => $bouteilleSAQ->nom,
