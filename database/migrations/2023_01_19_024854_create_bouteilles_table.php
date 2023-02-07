@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('image', 200);
             $table->string('pays', 50);
             $table->float('prix_achat', 8, 2);
-            $table->date('date_achat')->default(DB::raw('CURRENT_TIMESTAMP'));
+            $table->date('date_achat');
             $table->date('garde_jusqua');
             $table->year('millesime');
             $table->integer('quantite');
