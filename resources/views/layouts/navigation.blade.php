@@ -2,16 +2,18 @@
 
     <div class="dropdown">
         <button class="dropdown-btn">
-            <div class="flexProfilImg">
-                <div>
-                    <p>{{ Auth::user()->name }}</p>
-                </div>
-                <div>
-                    <img src="/img/down.png" alt="down">
-                </div>
-            </div>
-        </button>
             
+        <div class="flexProfilImg">
+            <div>
+                <span>{{ Auth::user()->name }}</span>
+            </div>
+            
+            <div>
+                <img src="/img/down.png" alt="down">
+            </div>
+        </div>
+        </button>
+    
         <div class="dropdown-content">
             <x-nav-link :href="route('profile.edit')">
                 {{ __('Profile') }}
@@ -35,14 +37,14 @@
             @csrf
             
             <x-dropdown-link :href="route('logout')"
-            onclick="event.preventDefault();
-                        this.closest('form').submit();">
+                onclick="event.preventDefault();
+                this.closest('form').submit();">
                 <div class="flexDeconnexion">
                     <div>
-                        <p>Se deconnecter</p>
-                    </div>
-                    <div>
                         <img class="iconeDeconnexion" src="{{ asset('img/logout.png') }}" alt="logout">                    
+                    </div>
+                    <div class="flexDeconnexionPara">
+                        <p>Se deconnecter</p>
                     </div>
                 </div>
             </x-dropdown-link>
