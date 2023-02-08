@@ -1,51 +1,54 @@
-<nav x-data="{ open: false }" class="custom-nav">
-    <!-- Primary Navigation Menu -->
-  
-                <!-- Logo -->
-                <div class="logo">
-                    <a href="{{ route('celliers') }}">
-                        <img src="{{ asset('img/vin.svg') }}" alt="wineBottle">
-                    </a>
-                </div>
+<div class="flexDDF">
 
-                <!-- Navigation Links -->
-                <div class="nav_links">
-                    <x-nav-link :href="route('celliers')" :active="request()->routeIs('celliers')">
-                        {{ __('celliers') }}
-                    </x-nav-link>
-                    {{-- <x-nav-link :href="route('celliers.create')" :active="request()->routeIs('celliers.create')">
-                        {{ __('Creer un cellier') }}
-                    </x-nav-link> --}}
-                </div>
-           
-
-            <!-- Settings Dropdown -->
-            <div class="settings-dropdown">
-                <x-dropdown>
-                    <x-slot name="trigger">
-                        <button class="dropdown-button">
-                            <div>{{ Auth::user()->name }}</div>
-                        </button>
-                    </x-slot>
-
-                    <x-slot name="content">
-                        <x-dropdown-link :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
-
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link :href="route('logout')"
-                                    onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
-                    </x-slot>
-                </x-dropdown>
+    <div class="dropdown">
+        <button class="dropdown-btn">
+            
+        <div class="flexProfilImg">
+            <div>
+                <span>{{ Auth::user()->name }}</span>
             </div>
- 
+            
+            <div>
+                <img src="/img/down.png" alt="down">
+            </div>
+        </div>
+        </button>
+    
+        <div class="dropdown-content">
+            <x-nav-link :href="route('profile.edit')">
+                {{ __('Profile') }}
+            </x-nav-link>
+            <x-nav-link :href="route('celliers')" :active="request()->routeIs('celliers')">
+                {{ __('Mes celliers') }}
+            </x-nav-link>
+            <x-nav-link :href="route('celliers.create')" :active="request()->routeIs('celliers.create')">
+                {{ __('Creer un cellier') }}
+            </x-nav-link>
+        </div>
+    </div>
 
-</nav>
+    <div>
+        <img class="logo" src="{{ asset('img/vinologo.png') }}" alt="logo">
+    </div>
+
+    <div>
+        <!-- Authentication -->
+        <form method="POST" action="{{ route('logout') }}">
+            @csrf
+            
+            <x-dropdown-link :href="route('logout')"
+                onclick="event.preventDefault();
+                this.closest('form').submit();">
+                <div class="flexDeconnexion">
+                    <div>
+                        <img class="iconeDeconnexion" src="{{ asset('img/logout.png') }}" alt="logout">                    
+                    </div>
+                    <div class="flexDeconnexionPara">
+                        <p>Se deconnecter</p>
+                    </div>
+                </div>
+            </x-dropdown-link>
+        </form>
+    </div>
+
+</div>

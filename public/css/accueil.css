@@ -13,8 +13,7 @@ header{
 }
 
 .logo {
-    width: 100px;
-    height: 100px;
+    width: 200px;
     transition: transform 0.3s ease-in-out;
 }
 
@@ -75,11 +74,12 @@ header{
     padding: 10px;
 }
 
+
 @media screen and (max-width: 740px) {
     .logo {
-        width: 40px;
-        height: 40px;
+        width: 100px;
     }
+
 
     .settings-dropdown {
         margin-left: 0;
@@ -93,3 +93,141 @@ header{
         width: 100px;
     }
 }
+
+
+.dropdown {
+    position: relative;
+    padding: 10px;
+    display: inline-block;
+  }
+  
+  .dropdown-btn {
+    background-color: transparent;
+    padding: 10px;
+    font-size: 16px;
+    /* width: 100px; */
+    border: none;
+    color: #900606;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    min-width: 160px;
+  }
+  
+  .dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  
+  .flexDDF{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: center;
+    background-color: #333;
+    padding: 10px;
+    background: linear-gradient(-45deg, #FFFCFF,#ffe3e3, #e1e1e1,#ffe3e3 ,#FFFCFF);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;    
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    margin-bottom: 120px;
+    height: 150px;
+
+  }
+  
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+  .iconeDeconnexion{
+    width: 50px;
+  }
+
+  .flexProfilImg{
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+
+  .flexProfilImg img{
+    width: 25px;
+    height: 25px;
+    margin-left: 10px;
+  }  
+
+  .flexProfilImg img:hover{
+    transform: scale(1.1);
+  }
+
+  @media (max-width: 480px) {
+    .flexProfilImg img{
+      margin-left: 0px;
+    }
+
+    .flexDeconnexionPara p{
+      display: none;
+    }
+
+    .iconeDeconnexion{
+      width: 40px;
+    }
+
+    .flexDeconnexionPara{
+      font-size: 10px;
+    }
+
+    .flexProfilImg  {
+      gap : 10px;
+      font-size: 16px;
+    }
+    
+    .flexProfilImg img{
+      width: 20px;
+    }
+  }
+
+
+  .flexDeconnexion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+  }
+
+  
+
+  .flexDeconnexionPara{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    color: #900606;
+  }
