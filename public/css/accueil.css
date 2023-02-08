@@ -75,6 +75,7 @@ header{
     padding: 10px;
 }
 
+
 @media screen and (max-width: 740px) {
     .logo {
         width: 40px;
@@ -93,3 +94,105 @@ header{
         width: 100px;
     }
 }
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .dropdown-btn {
+    background-color: transparent;
+    padding: 10px;
+    font-size: 16px;
+    /* width: 100px; */
+    border: none;
+    color: black;
+    cursor: pointer;
+  }
+  
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    z-index: 1;
+    background-color: #fff;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    min-width: 160px;
+  }
+  
+  .dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown:hover .dropdown-content {
+    display: block;
+  }
+
+  
+  .flexDDF{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    justify-items: center;
+    background-color: #333;
+    padding: 20px;
+    background: linear-gradient(-45deg, #FFFCFF,#d5d5d5, #929292);
+	background-size: 400% 400%;
+	animation: gradient 15s ease infinite;    
+    -webkit-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    margin-bottom: 120px;
+    min-height: 150px;
+  }
+
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+
+  .iconeDeconnexion{
+    width: 50px;
+    margin-right: 10px;
+  }
+
+  .flexProfilImg{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    gap: 30px;
+  }
+
+  .flexProfilImg img{
+    width: 25px;
+    margin-left: 10px;
+  }  
+
+  @media (max-width: 480px) {
+    .flexProfilImg img{
+      margin-left: 0px;
+    }
+
+    .flexProfilImg  {
+      gap : 20px;
+    }
+  }
+
+
+  .flexDeconnexion{
+    display: flex;
+    /* align-items: center;
+    justify-items: center; */
+  }
