@@ -26,6 +26,10 @@
     </div>
 
     <div>
+        <img class="logo" src="{{ asset('img/vinologo.png') }}" alt="logo">
+    </div>
+
+    <div>
         <!-- Authentication -->
         <form method="POST" action="{{ route('logout') }}">
             @csrf
