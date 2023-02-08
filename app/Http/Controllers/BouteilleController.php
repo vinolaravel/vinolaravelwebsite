@@ -84,7 +84,7 @@ class BouteilleController extends Controller
 
             $request->validate([
                 'nom' => 'required|max:100',
-                'image' => ['required', 'mimes:jpeg,jpg,png', 'max:3000'],
+                'image' => ['mimes:jpeg,jpg,png', 'max:3000'],
                 'date_achat' => 'required|date|before:today',
                 'prix_achat' => 'required|min:0',
                 'quantite' => 'required|numeric|min:1',
@@ -110,15 +110,15 @@ class BouteilleController extends Controller
 
             return redirect()->route('celliers.show', $request->id);
         } else {
-            $bouteilleSAQ = BouteilleSaq::where('nom', $request->nom)->first();
+            $bouteilleSAQ = BouteilleSaq::where('nom', $request->nom_SAQ)->first();
 
             $request->validate([
-                'nom' => 'required',
-                'prix_achat' => 'required|numeric',
-                'date_achat' => 'required|date|before:today',
-                'millesime' => 'required|regex:/^[1-2][0-9]{3}$/|before:' . date('Y'),
-                'garde_jusqua' => 'required|date|after_or_equal:' . date('Y'),
-                'quantite' => 'required|numeric|min:1'
+                'nom_SAQ' => 'required',
+                'prix_achat_SAQ' => 'required|numeric',
+                'date_achat_SAQ' => 'required|date|before:today',
+                'millesime_SAQ' => 'required|regex:/^[1-2][0-9]{3}$/|before:' . date('Y'),
+                'garde_jusqua_SAQ' => 'required|date|after_or_equal:' . date('Y'),
+                'quantite_SAQ' => 'required|numeric|min:1'
             ]);
 
             Bouteille::create(
@@ -127,11 +127,11 @@ class BouteilleController extends Controller
                     'nom' => $bouteilleSAQ->nom,
                     'image' => $bouteilleSAQ->image,
                     'pays' => $bouteilleSAQ->pays,
-                    'prix_achat' => $request->prix_achat,
-                    'millesime' => $request->millesime,
-                    'date_achat' => $request->date_achat,
-                    'garde_jusqua' => $request->garde_jusqua,
-                    'quantite' => $request->quantite,
+                    'prix_achat' => $request->prix_achat_SAQ,
+                    'millesime' => $request->millesime_SAQ,
+                    'date_achat' => $request->date_achat_SAQ,
+                    'garde_jusqua' => $request->garde_jusqua_SAQ,
+                    'quantite' => $request->quantite_SAQ,
                     'description' => $bouteilleSAQ->description,
                     'format' => $bouteilleSAQ->format,
                     'type_id' => $bouteilleSAQ->type_id
