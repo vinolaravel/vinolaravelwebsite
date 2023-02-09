@@ -1,33 +1,46 @@
 <x-app-layout>
     @forelse ($celliers as $cellier)
         <div class="cellier">
-            <span class="nomCellier">{{ $cellier->nom }}</span>
+            <div class="flexImgMapNomCellier">
+                <img src="/img/map.png" alt="map">
+                <span class="nomCellier">{{ $cellier->nom }}</span>
+            </div>
             @if ($cellier->nbBouteilles == 0)
-                <h3>Ce cellier est vide!</h3>                
+                <p>Ce cellier est vide!</p>                
             @endif
             @if ($cellier->nbBouteilles > 0)
                 @if ($cellier->nbBouteilles == 1)
-                    <h3>Contient 1 bouteille</h3>
+                    <p>Contient 1 bouteille</p>
                     
                 @else 
-                    <h3>Contient {{ $cellier->nbBouteilles }} bouteilles</h3>
+                    <p>Contient {{ $cellier->nbBouteilles }} bouteilles</p>
                 @endif
             @endif
             <a href="{{ route('celliers.show', $cellier->id) }}">Voir le contenu du cellier</a>
 
-            <form action="{{ route('celliers.destroy', $cellier->id) }}" method="post" class="petitForm">
-                @csrf
-                @method('DELETE')
-                <button type="submit" class="myButton">Supprimer</button>
-            </form>
+            <div class="flexSuppModifCellier"> 
+                <div>
+                    <a  href="{{ route('celliers.edit', $cellier->id) }}">
+                       <button class="btnVert"> Modifier</button>
+                    </a>
+                </div>
 
-            <a href="{{ route('celliers.edit', $cellier->id) }}">
-                <button class="myButton">Modifier</button>
-            </a>
+                <div>
+                    <form action="{{ route('celliers.destroy', $cellier->id) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btnRouge btnSupp">Supprimer</button>
+                    </form>
+                </div>
+            </div>
         </div>
         @empty
-            <p>Aucun cellier disponible</p>
-            <a href="{{ route('celliers.create', auth()->user()->id) }}">Créer un cellier</a>
+        <div class="flexDivACBtnAC">
+            <p class="paraAucunCellier">Aucun cellier disponible</p>
+            <div class="flexBtnAjouterCellier">
+                <a class="btnRouge" href="{{ route('celliers.create', auth()->user()->id) }}">Créer un cellier</a>
+            </div>
+        </div>
         @endforelse
-            <a href="{{ route('celliers.create', auth()->user()->id) }}">Créer un nouveau cellier</a>
+            <!-- <a href="{{ route('celliers.create', auth()->user()->id) }}">Créer un nouveau cellier</a> -->
 </x-app-layout>
