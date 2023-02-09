@@ -10,7 +10,6 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-
             <button class="btnRouge" type="submit">Ajouter</button>
         </form>
     </section>

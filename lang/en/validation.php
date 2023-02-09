@@ -9,7 +9,7 @@ return [
     |
     | The following language lines contain the default error messages used by
     | the validator class. Some of these rules have multiple versions such
-    | as the size rules. Feel free to tweak each of these messages here.
+    | as the size rules. Feel free to tweak each of these messages here. 
     |
     */
 
@@ -17,7 +17,7 @@ return [
     'accepted_if' => 'The :attribute must be accepted when :other is :value.',
     'active_url' => 'The :attribute is not a valid URL.',
     'after' => 'The :attribute must be a date after :date.',
-    'after_or_equal' => 'Veuillez mettre une date ultérieure.',
+    'after_or_equal' => 'The :attribute must be a date after or equal to :date.',
     'alpha' => 'The :attribute must only contain letters.',
     'alpha_dash' => 'The :attribute must only contain letters, numbers, dashes and underscores.',
     'alpha_num' => 'The :attribute must only contain letters and numbers.',
@@ -100,7 +100,7 @@ return [
         'array' => 'The :attribute must have at least :min items.',
         'file' => 'The :attribute must be at least :min kilobytes.',
         'numeric' => 'La valeur que vous avez mise est invalide.',
-        'string' => 'The :attribute must be at least :min characters.',
+        'string' => 'Ce champ doit contenir :min caractères au moins.',
     ],
     'min_digits' => 'The :attribute must have at least :min digits.',
     'multiple_of' => 'The :attribute must be a multiple of :value.',
@@ -139,7 +139,7 @@ return [
     'starts_with' => 'The :attribute must start with one of the following: :values.',
     'string' => 'The :attribute must be a string.',
     'timezone' => 'The :attribute must be a valid timezone.',
-    'unique' => 'The :attribute has already been taken.',
+    'unique' => 'Cette valeur a déjà été prise, mettez une autre!',
     'uploaded' => 'The :attribute failed to upload.',
     'uppercase' => 'The :attribute must be uppercase.',
     'url' => 'The :attribute must be a valid URL.',
