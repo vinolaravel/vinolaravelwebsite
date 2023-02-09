@@ -1,0 +1,36 @@
+.divAjoutCellier *{
+    margin-bottom: 10px;
+}
+
+.formAjoutCellier{
+    width: 30%;
+    text-align: center;
+    padding: 60px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.titre{
+    font-size: 1.5em;
+    margin-top: 80px;
+    width: 100%;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .formAjoutCellier {
+      width: 80%;
+      padding: 15px;
+      border: none;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .formAjoutCellier {
+      width: 90%;
+      padding: 0;
+      border: none;
+    }
+}
