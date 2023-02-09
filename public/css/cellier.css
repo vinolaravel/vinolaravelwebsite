@@ -99,3 +99,111 @@
     width: 100%;
   }
 }
+
+.paraAucunCellier{
+  text-align: center;
+  font-size: 1.5em;
+  /* font-weight: bold; */
+  margin-bottom: 10px;
+}
+
+.flexBtnAjouterCellier{
+  display: flex;
+  justify-content: center;
+}
+
+.flexBtnAjouterCellier a:hover{
+  text-decoration: none;
+  color: white;
+}
+
+.btnRouge{
+  background-color: #910717;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-radius: none;
+  padding: 10px 10px;
+  margin: 10px;
+  text-align: center;
+}
+
+.btnRouge:hover{
+  transition: all 0.4s ease-in-out;
+  background-color: rgb(178, 0, 0);;
+}
+
+.flexDivACBtnAC{
+  position: absolute;
+  left: 50%;
+  top: 60%;
+  transform: translate(-50%, -50%);
+}
+
+.nomCellier {
+  font-size: 30pt;
+}
+
+.flexImgMapNomCellier{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.flexImgMapNomCellier img{
+  width: 50px;
+  margin-right: 10px;
+}
+
+.cellier p{
+  font-style: italic;
+  margin-bottom: 10px;
+}
+
+.flexSuppModifCellier{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border: red solid; */
+  gap: 10px;
+}
+
+.flexSuppModifCellier a{
+  text-decoration: none;
+  color: white;
+}
+
+.btnSupp {
+  text-align: center;
+  width: 100px;
+  font-size: 18px;
+}
+
+
+.btnVert{
+  background-color: #0f9d58;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-radius: none;
+  padding: 8px 8px;
+  /* margin: 10px; */
+  text-align: center;
+}
+
+
+/* media query 760 */
+@media screen and (max-width: 760px) {
+  .btnSupp {
+    font-size: 16px;
+  }
+
+  .btnRouge{
+    padding: 8px 8px;
+  }
+}
