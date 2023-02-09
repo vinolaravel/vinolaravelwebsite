@@ -1,5 +1,8 @@
 <x-app-layout>
-    <h1>Modifier une bouteille</h1> 
+    <div class="centrerNomCellier">
+        <p class="nomCellier">Modifier une bouteille</p>
+    </div>
+    
     <form action="{{ route('bouteilles.update', [$cellier->id, $bouteille->id]) }}" method="post">
         @csrf
         @method('PUT')
@@ -71,8 +74,8 @@
             </div>
 
             <div>
-                <label for="description">Description</label>
-                <textarea readonly disabled> {{old('description', $bouteille->description)}} </textarea>
+                <label for="description">Description</label><br>
+                <textarea rows="4" cols="30" readonly disabled> {{old('description', $bouteille->description)}} </textarea>
             </div>
 
 
@@ -417,6 +420,6 @@
             </div>
         @endif
         
-        <button type="submit">Appliquer</button>
+        <button type="submit" class="btnRouge">Modifier</button>
     </form>
 </x-app-layout>
