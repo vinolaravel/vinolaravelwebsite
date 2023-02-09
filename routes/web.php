@@ -10,12 +10,11 @@ use App\Http\Controllers\AdminCellierController;
 use App\Http\Controllers\BouteilleSaqController;
 use App\Http\Controllers\AdminBouteilleController;
 use App\Http\Controllers\ChercheBouteilleController;
+use Illuminate\Support\Facades\Session;
 
 // check if session exists, if not, redirect to welcome page, else redirect to celliers page
-
-
-
 // Route::get('/', [CellierController::class, 'redirection'])->name('redirection');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/', function () {
@@ -66,8 +65,8 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-if (!session()->has('user')) {
+if (!Session::has('user')) {
     Route::get('/', function () {
         return view('welcome');
-    });
+    })->middleware('guest')->name('welcome');
 }
