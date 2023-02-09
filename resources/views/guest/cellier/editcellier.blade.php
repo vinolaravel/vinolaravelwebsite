@@ -4,6 +4,7 @@
         <form action="{{ route('celliers.update', $cellier->id) }}" method="post">
             @csrf
             @method('PUT')
+            
             <div class="form-group">
                 <label for="nom">Nom du cellier</label>
                 <input type="text" name="nom" id="nom" maxlength="50" placeholder="{{old('nom', $cellier->nom)}}">

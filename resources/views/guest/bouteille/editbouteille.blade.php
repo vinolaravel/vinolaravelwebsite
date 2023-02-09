@@ -3,7 +3,7 @@
     <form action="{{ route('bouteilles.update', [$cellier->id, $bouteille->id]) }}" method="post">
         @csrf
         @method('PUT')
-        
+    
         @if (substr($bouteille->image, 0, 19) == 'https://www.saq.com')
             <img src="{{ $bouteille->image }}" alt="{{ $bouteille->nom }}" width="200px">
 

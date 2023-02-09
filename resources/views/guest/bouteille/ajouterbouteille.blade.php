@@ -13,7 +13,6 @@
                 <label for="nom">Nom de la bouteille</label>
                 <input type="text" name="nom" id="nom" placeholder="Entrez le nom de la bouteille" value="{{ old('nom') }}">
                 <ul class="listeAutoComplete">
-
                 </ul>
                 @error('nom')
                     <span class="text-danger">{{ $message }}</span>
