@@ -3,7 +3,7 @@
     <form action="{{ route('bouteilles.update', [$cellier->id, $bouteille->id]) }}" method="post">
         @csrf
         @method('PUT')
-        
+    
         @if (substr($bouteille->image, 0, 19) == 'https://www.saq.com')
             <img src="{{ $bouteille->image }}" alt="{{ $bouteille->nom }}" width="200px">
 
@@ -45,6 +45,82 @@
                 @error('millesime')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
+            </div>
+
+            <div>
+                <label for="garde_jusqua">Garde jusqu'à</label>
+                <input type="date" name="garde_jusqua" id="garde_jusqua" value="{{old('garde_jusqua', $bouteille->garde_jusqua)}}">
+                @error('garde_jusqua')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div>
+                <label for="pays">Pays</label>
+                <input type="text" value="{{old('pays', $bouteille->pays)}}" readonly disabled>
+            </div>
+
+            <div>
+                <label for="type">Type du vin</label>
+                <input type="text" value="Vin {{old('type', $bouteille->type)}}" readonly disabled>
+            </div>
+
+            <div>
+                <label for="format">Format</label>
+                <input type="text" value="{{old('format', $bouteille->format)}}" readonly disabled>
+            </div>
+
+            <div>
+                <label for="description">Description</label>
+                <textarea readonly disabled> {{old('description', $bouteille->description)}} </textarea>
+            </div>
+        @else
+            <img src="{{ asset('images/' . $bouteille->image) }}" alt="{{ $bouteille->nom }}" width="200px">
+        
+        @if (substr($bouteille->image, 0, 19) == 'https://www.saq.com')
+            <img src="{{ $bouteille->image }}" alt="{{ $bouteille->nom }}" width="200px">
+
+            <div>
+                <label for="nom">Nom de la bouteille</label>
+                <input type="text" name="nom" id="nom" value="{{old('nom', $bouteille->nom)}}">
+                @error('nom')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div>
+                <label for="date_achat">Date d'achat</label>
+                <input type="date" name="date_achat" id="date_achat" value="{{old('date_achat', $bouteille->date_achat)}}">
+                @error('date_achat')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div>
+                <label for="prix_achat">Prix d'achat</label>
+                <input type="number" name="prix_achat" id="prix_achat" value="{{old('prix_achat', $bouteille->prix_achat)}}">
+                @error('prix_achat')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div>
+                <label for="quantite">Quantité</label>
+                <input type="number" name="quantite" id="quantite" value="{{old('quantite', $bouteille->quantite)}}">
+                @error('quantite')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
+            <div>
+                <label for="millesime">Millesime</label>
+                <input type="text" name="millesime" id="millesime" value="{{old('millesime', $bouteille->millesime)}}">
+                @error('millesime')
+                <label for="type">Type du vin</label>
+                <select name="type_id" id="type">
+                    <option value="1">Vin blanc</option>
+                    <option value="2">Vin rouge</option>
+                </select>
             </div>
 
             <div>
