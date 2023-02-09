@@ -6,7 +6,10 @@
             @method('PUT')
             <div class="form-group">
                 <label for="nom">Nom du cellier</label>
-                <input type="text" name="nom" id="nom" placeholder="{{old('nom', $cellier->nom)}}">
+                <input type="text" name="nom" id="nom" maxlength="50" placeholder="{{old('nom', $cellier->nom)}}">
+                @error('nom')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <button type="submit" class="btn btn-primary">Appliquer</button>
