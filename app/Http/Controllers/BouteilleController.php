@@ -178,15 +178,13 @@ class BouteilleController extends Controller
     {
         $bouteille = Bouteille::findOrfail($request->idBouteille)->first();
         $request->validate([
-            'nom' => 'required',
-            'pays' => 'required',
-            'prix_achat' => 'required|numeric',
-            'date_achat' => 'required|date',
-            'garde_jusqua' => 'required|date',
-            'millesime' => 'required|numeric',
-            'quantite' => 'required|numeric',
-            'description' => 'required',
-            'format' => 'required',
+            'nom' => 'required|max:100',
+            'prix_achat' => 'required|min:0',
+            'date_achat' => 'required|date|before:today',
+            'garde_jusqua' => 'required|date|after_or_equal:' . date('Y'),
+            'millesime' => 'required|regex:/^[1-2][0-9]{3}$/|before:' . date('Y'),
+            'quantite' => 'required|numeric|min:1',
+            'description' => 'required|min:10|max:200'
         ]);
 
         $bouteille->update($request->all());

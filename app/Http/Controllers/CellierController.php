@@ -49,7 +49,7 @@ class CellierController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nom' => 'required | max:255 | regex:/^((?!cellier).)*$/',
+            'nom' => ['required', 'min:3', 'max:50'],
         ]);
 
         Cellier::create([
@@ -109,7 +109,7 @@ class CellierController extends Controller
     public function update(Request $request, $id)
     {
         $request->validate([
-            'nom' => 'required | max:255 | regex:/^((?!cellier).)*$/',
+            'nom' => ['required', 'min:3', 'max:50'],
         ]);
 
         $cellier = Cellier::findOrfail($id);

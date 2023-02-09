@@ -364,7 +364,7 @@
             </div>
 
             <div>
-                <label for="quantite">Quantite</label>
+                <label for="quantite">Quantité</label>
                 <input type="number" name="quantite" id="quantite" placeholder="Entrez la quantite" value="{{ old('quantite') }}">
                 @error('quantite')
                     <div class="text-danger">{{ $message }}</div>
