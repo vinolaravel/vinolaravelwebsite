@@ -64,7 +64,6 @@
             <p class="paraAucunCellier">Aucune bouteille disponible</p>
         </div>
         @endforelse
-        <div style="height: 20px;"></div>
     </div>
         
 
