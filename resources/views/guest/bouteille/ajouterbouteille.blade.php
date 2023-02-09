@@ -2,8 +2,8 @@
     <form action="{{ route('bouteilles.store', $cellier->id) }}" method="post" enctype="multipart/form-data">
         @csrf
 
-        <button id="btnSAQ" style="display: none;">Choisir une bouteille de la SAQ</button>
-        <button id="btnPerso">Insérer une nouvelle bouteille (hors SAQ)</button>
+        <button class="btnRouge" id="btnSAQ" style="display: none;">Choisir une bouteille de la SAQ</button>
+        <button class="btnRouge" id="btnPerso">Insérer une nouvelle bouteille (hors SAQ)</button>
         
         <h1 id="titreSaq">Ajouter une bouteille de la SAQ</h1>
         <h1 id="titreNew" style="display: none;">Ajouter une bouteille personnelle</h1>
@@ -407,7 +407,7 @@
 
         <section id="newBouteille" style="display: none"></section>
 
-        <button type="submit" id="btnAjouter">Ajouter</button>
+        <button type="submit" id="btnAjouter" class="btnRouge">Ajouter</button>
     </form>
 </x-app-layout>
 

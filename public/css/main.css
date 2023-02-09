@@ -1,5 +1,4 @@
 @import url("normalize.css");
-@import url("variable.css");
 @import url("accueil.css");
 @import url("form.css");
 @import url("cellier.css");
@@ -10,11 +9,4 @@
 @import url("inscription.css");
 @import url("connexion.css");
 @import url("ajoutCellier.css");
-
-/* html, body, main {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-} */
 

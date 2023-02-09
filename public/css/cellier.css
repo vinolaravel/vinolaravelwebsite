@@ -6,11 +6,13 @@
 
  .carteCatalogue {
    text-align: center;
-   width: 20%;
-   padding: 60px;
+   width: 23%;
+   padding: 50px;
    margin: 10px;
    text-align: center;
    background-color: #fff;
+   border: solid rgb(234, 234, 234) .1px;
+   border-radius: 5px;
    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
  }
 
@@ -42,22 +44,6 @@
   text-decoration: underline;
 }
 
- .options button {
-   padding: 10px 10px;
-   background-color: #910717;
-   color: #fff;
-   border: none;
-   cursor: pointer;
-   transition: all 0.3s ease-in-out;
-  border-radius: none;
-
- }
-
-
- .options button:hover {
-   background-color: #fff;
-   color: #910717;
- }
 
  .urlSaq {
    text-align: center;
@@ -94,11 +80,7 @@
   }
 }
 
-@media screen and (max-width: 480px) {
-  .carteCatalogue {
-    width: 100%;
-  }
-}
+
 
 .paraAucunCellier{
   text-align: center;
@@ -207,3 +189,100 @@
     padding: 8px 8px;
   }
 }
+
+.centrerNomCellier{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnRetour{
+  background-color: #910717;
+  color: #fff;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  border-radius: none;
+  padding: 8px 8px;
+  margin: 10px;
+  text-align: center;
+}
+
+.flexIconeBouteille{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  margin-top: 15px;
+}
+
+.flexIconeBouteille img{
+  cursor: pointer;
+  width: 30px;
+  /* border: red solid; */
+}
+
+.flexIconeBouteille a{
+  text-decoration: none;
+  color: #910717;
+  padding: 10px;
+}
+
+.flexIconeBouteille p{
+  cursor: pointer;
+  color: #910717;
+}
+
+.flexIconeBouteille form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  /* border: purple solid; */
+}
+
+/* media query phone */
+
+@media screen and (max-width: 480px) {
+  .flexIconeBouteille a{
+    padding: 0;
+  }
+  
+  .flexIconeBouteille p{
+    display: none;
+  }
+  
+  .flexIconeBouteille form{
+    padding: 0;
+  }
+
+  .flexBouteilleCellier {
+    display: block;
+  }
+
+  .carteCatalogue {
+    width: 92%;
+    margin-left: 4%;
+    margin-right: 4%;
+    margin-bottom: 20px;
+  }
+}
+
+/* for larger screen */
+@media screen and (min-width: 768px) {
+  .flexBouteilleCellier {
+    gap: 10px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+
+.divNomBouteille{
+  height: 70px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
