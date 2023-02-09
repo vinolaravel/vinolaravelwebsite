@@ -6,6 +6,9 @@
             <div class="divAjoutCellier">
                 <label  for="nom">Nom du cellier</label>
                 <input type="text" name="nom" id="nom" placeholder="Entrez le nom du cellier">
+                @error('nom')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
             </div>
 
             <button class="btnRouge" type="submit">Ajouter</button>
