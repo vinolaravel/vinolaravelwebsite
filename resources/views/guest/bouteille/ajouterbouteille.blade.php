@@ -11,51 +11,50 @@
         <section id="saqSection">
             <div class="rechercher">
                 <label for="nom">Nom de la bouteille</label>
-                <input type="text" name="nom_SAQ" id="nom" placeholder="Tapez pour rechercher..." value="{{ old('nom_SAQ') }}">
+                <input type="text" name="nom" id="nom" placeholder="Entrez le nom de la bouteille" value="{{ old('nom') }}">
                 <ul class="listeAutoComplete">
-
                 </ul>
-                @error('nom_SAQ')
+                @error('nom')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
             <div>
                 <label for="prix_achat">Prix d'achat</label>
-                <input type="number" step="0.01" name="prix_achat_SAQ" id="prix_achat" placeholder="Le prix en $" value="{{ old('prix_achat_SAQ') }}">
-                @error('prix_achat_SAQ')
+                <input type="number" name="prix_achat" id="prix_achat" placeholder="entrez prix" value="{{ old('prix_achat') }}">
+                @error('prix_achat')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
             <div>
                 <label for="date_achat">Date d'achat</label>
-                <input type="date" name="date_achat_SAQ" id="date_achat" value="{{ old('date_achat_SAQ') }}">
-                @error('date_achat_SAQ')
+                <input type="date" name="date_achat" id="date_achat" placeholder="Entrez la date d'achat" value="{{ old('date_achat') }}">
+                @error('date_achat')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
             <div>
                 <label for="millesime">Millesime</label>
-                <input type="text" name="millesime_SAQ" maxlength="4" id="millesime" placeholder="Année de récolte (YYYY)" value="{{ old('millesime_SAQ') }}">
-                @error('millesime_SAQ')
+                <input type="text" name="millesime" maxlength="4" id="millesime" placeholder="Entrez le millesime" value="{{ old('millesime') }}">
+                @error('millesime')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
             <div>
                 <label for="garde_jusqua">Garde jusqu'a</label>
-                <input type="date" name="garde_jusqua_SAQ" maxlength="4" id="garde_jusqua" value="{{ old('garde_jusqua_SAQ') }}">
-                @error('garde_jusqua_SAQ')
+                <input type="date" name="garde_jusqua" maxlength="4" id="garde_jusqua" placeholder="Entrez la date de garde" value="{{ old('garde_jusqua') }}">
+                @error('garde_jusqua')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
 
             <div>
-                <label for="quantite">Quantité</label>
-                <input type="number" name="quantite_SAQ" id="quantite" placeholder="Combien de bouteilles?" value="{{ old('quantite_SAQ') }}">
-                @error('quantite_SAQ')
+                <label for="quantite">Quantite</label>
+                <input type="number" name="quantite" id="quantite" placeholder="Entrez la quantite" value="{{ old('quantite') }}">
+                @error('quantite')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
             </div>
@@ -64,7 +63,7 @@
         <template id="newBouteilleTemplate" style="display: none" disabled>
             <div>
                 <label for="nom">Nom de la bouteille</label>
-                <input type="text" name="nom" placeholder="Tapez le nom de la bouteille" value="{{ old('nom') }}">
+                <input type="text" name="nom" placeholder="Entrez le nom de la bouteille" value="{{ old('nom') }}">
                 @error('nom')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
@@ -341,7 +340,7 @@
 
             <div>
                 <label for="date_achat">Date d'achat</label>
-                <input type="date" name="date_achat" id="date_achat" value="{{ old('date_achat') }}">
+                <input type="date" name="date_achat" id="date_achat" placeholder="Entrez la date d'achat" value="{{ old('date_achat') }}">
                 @error('date_achat')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -349,7 +348,7 @@
 
             <div>
                 <label for="prix_achat">Prix d'achat</label>
-                <input type="number" step="0.01" name="prix_achat" id="prix_achat" placeholder="Le prix en $" value="{{ old('prix_achat') }}">
+                <input type="number" name="prix_achat" id="prix_achat" placeholder="entrez prix" value="{{ old('prix_achat') }}">
                 @error('prix_achat')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -365,7 +364,7 @@
 
             <div>
                 <label for="quantite">Quantité</label>
-                <input type="number" name="quantite" id="quantite" placeholder="Combien de bouteilles?" value="{{ old('quantite') }}">
+                <input type="number" name="quantite" id="quantite" placeholder="Entrez la quantite" value="{{ old('quantite') }}">
                 @error('quantite')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -373,7 +372,7 @@
 
             <div>
                 <label for="millesime">Millesime</label>
-                <input type="text" name="millesime" maxlength="4" id="millesime" placeholder="Année de récolte (YYYY)" value="{{ old('millesime') }}">
+                <input type="text" name="millesime" maxlength="4" id="millesime" placeholder="Entrez le millesime" value="{{ old('millesime') }}">
                 @error('millesime')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -381,7 +380,7 @@
 
             <div>
                 <label for="garde_jusqua">Garde jusqu'a</label>
-                <input type="date" name="garde_jusqua" maxlength="4" id="garde_jusqua" value="{{ old('garde_jusqua') }}">
+                <input type="date" name="garde_jusqua" maxlength="4" id="garde_jusqua" placeholder="Entrez la date de garde" value="{{ old('garde_jusqua') }}">
                 @error('garde_jusqua')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -399,7 +398,7 @@
 
             <div>
                 <label for="description">Description</label>
-                <textarea name="description" id="description" cols="30" rows="10" placeholder="Tapez votre description">{{ old('description') }}</textarea>
+                <textarea name="description" id="description" cols="30" rows="10" value="{{ old('description') }}"></textarea>
                 @error('description')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
