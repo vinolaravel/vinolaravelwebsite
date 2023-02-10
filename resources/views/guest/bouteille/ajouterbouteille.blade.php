@@ -24,7 +24,7 @@
 
             <div>
                 <label for="prix_achat">Prix d'achat</label>
-                <input type="number" min='0' name="prix_achat" id="prix_achat" placeholder="entrez prix" value="{{ old('prix_achat') }}">
+                <input type="number" min='0' name="prix_achat" id="prix_achat" placeholder="Entrez prix" value="{{ old('prix_achat') }}">
                 @error('prix_achat')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
@@ -351,7 +351,7 @@
 
             <div>
                 <label for="prix_achat">Prix d'achat</label>
-                <input type="number" name="prix_achat" min='0' id="prix_achat" placeholder="entrez prix" value="{{ old('prix_achat') }}">
+                <input type="number" name="prix_achat" min='0' id="prix_achat" placeholder="Entrez prix" value="{{ old('prix_achat') }}">
                 @error('prix_achat')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
