@@ -5,7 +5,7 @@
             <!-- Session Status -->
             <x-auth-session-status :status="session('status')" />
 
-            <form method="POST" action="{{ route('login') }}"> 
+            <form class="formulaire formlogin" method="POST" action="{{ route('login') }}"> 
                 @csrf
                 <h5 class="form-title">Connexion</h5><br>
                 <!-- Email Address -->
@@ -14,16 +14,12 @@
                     <x-text-input id="email" type="email" name="email" :value="old('email')" required autofocus class="login__input"/>
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
-
+                
                 <!-- Password -->
                 <div class="champlogin">
                     <x-input-label for="password" :value="__('Mot de passe')" />
-
-                    <x-text-input id="password"
-                                    type="password"
-                                    name="password"
-                                    required autocomplete="current-password" class="login__input"/>
-
+                    
+                    <x-text-input id="password" type="password" name="password" required autocomplete="current-password" class="login__input"/>
                     <x-input-error :messages="$errors->get('password')" />
                 </div>
 
