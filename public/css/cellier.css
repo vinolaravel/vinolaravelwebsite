@@ -311,6 +311,10 @@ width: 15%;
   /* border: purple solid; */
 }
 
+.divImgBouteille{
+  margin-bottom: 24px;
+}
+
 /* media query phone */
 
 @media screen and (max-width: 480px) {
@@ -361,6 +365,7 @@ width: 15%;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-bottom: 10px;
   }
 
   .imgBouteille{

@@ -1,4 +1,4 @@
-<x-app-layout>
+{{-- <x-app-layout>
     @if ($bouteilles->count() > 0)
     <table>
         <tr>
@@ -13,7 +13,7 @@
                 <td>{{ $bouteille->pays }}</td>
                 <td>{{ $bouteille->millesime }}</td>
                 <td>{{ $bouteille->quantite }}</td>
-                {{-- <td>
+                <td>
                     <form action="{{ route('celliers.destroy', $cellier->id) }}" method="post">
                         @csrf
                         @method('DELETE')
@@ -29,7 +29,7 @@
                     <a href="{{ route('celliers.show', $cellier->id) }}">
                         <button>Voir le contenu du cellier</button>
                     </a>
-                </td> --}}
+                </td>
             </tr>
         @endforeach
     </table>
@@ -38,3 +38,4 @@
     @endif
     {{  $bouteilles->links()  }}
 </x-app-layout>
+ --}}
