@@ -3,12 +3,14 @@
         <p class="nomCellier">Modifier une bouteille</p>
     </div>
     
-    <form action="{{ route('bouteilles.update', [$cellier->id, $bouteille->id]) }}" method="post">
+    <form class="formulaire" action="{{ route('bouteilles.update', [$cellier->id, $bouteille->id]) }}" method="post">
         @csrf
         @method('PUT')
     
         @if (substr($bouteille->image, 0, 19) == 'https://www.saq.com')
-            <img src="{{ $bouteille->image }}" alt="{{ $bouteille->nom }}" width="200px">
+            <div class="flexImageEditBouteille ">
+                <img src="{{ $bouteille->image }}" alt="{{ $bouteille->nom }}" width="200px">
+            </div>
 
             <div>
                 <label for="nom">Nom de la bouteille</label>
@@ -28,7 +30,7 @@
 
             <div>
                 <label for="prix_achat">Prix d'achat</label>
-                <input type="number" name="prix_achat" id="prix_achat" value="{{old('prix_achat', $bouteille->prix_achat)}}">
+                <input type="number" min='0' name="prix_achat" id="prix_achat" value="{{old('prix_achat', $bouteille->prix_achat)}}">
                 @error('prix_achat')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -36,7 +38,7 @@
 
             <div>
                 <label for="quantite">Quantité</label>
-                <input type="number" name="quantite" id="quantite" value="{{old('quantite', $bouteille->quantite)}}">
+                <input type="number" min='1' name="quantite" id="quantite" value="{{old('quantite', $bouteille->quantite)}}">
                 @error('quantite')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -419,7 +421,8 @@
                 @enderror
             </div>
         @endif
-        
-        <button type="submit" class="btnRouge">Modifier</button>
+        <div class="flexCenterBtnAjouterBtl">
+            <button style="width: 200px;" type="submit" class="btnRouge">Modifier</button>
+        </div>
     </form>
 </x-app-layout>
