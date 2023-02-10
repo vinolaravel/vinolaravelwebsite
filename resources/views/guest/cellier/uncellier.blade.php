@@ -36,7 +36,7 @@
 
             <div class="flexIconeBouteille">
                 
-                <form action="{{ route('bouteilles.add', [$cellier->id, $bouteille->id]) }}" method="post">
+                <form data-js-form action="{{ route('bouteilles.add', [$cellier->id, $bouteille->id]) }}" method="post">
                     @csrf
                     <div>
                         <img src="/img/ajouter.png" alt="ajouter">
@@ -44,7 +44,7 @@
                     </div>
                 </form>
                 
-                <form action="{{ route('bouteilles.drink', [$cellier->id, $bouteille->id]) }}" method="post">
+                <form data-js-form action="{{ route('bouteilles.drink', [$cellier->id, $bouteille->id]) }}" method="post">
                     @csrf
                     <div>
                         <img src="/img/boire.png" alt="boire">
@@ -129,15 +129,15 @@
             
 
 
-            // let form = document.querySelectorAll('form');
-            // for(let i = 0; i < form.length; i++){
-            //     let img = form[i].querySelector('img');
-            //     let p = form[i].querySelector('p');
-            //     img.addEventListener('click', function(){
-            //         form[i].submit();
-            //     });
-            //     p.addEventListener('click', function(){
-            //         form[i].submit();
-            //     });
-            // }
+            let form = document.querySelectorAll('[data-js-form]');
+            for(let i = 0; i < form.length; i++){
+                let img = form[i].querySelector('img');
+                let p = form[i].querySelector('p');
+                img.addEventListener('click', function(){
+                    form[i].submit();
+                });
+                p.addEventListener('click', function(){
+                    form[i].submit();
+                });
+            }
         </script>
