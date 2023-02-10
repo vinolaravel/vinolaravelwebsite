@@ -43,11 +43,11 @@
 width: 15%;
 }
 
-.cellier .btn-primary:hover {
+/* .cellier .btn-primary:hover {
   background-color:white;
   color: black;
   transition: background-color 0.5s ease;
-  }
+  } */
   
   .cellier .btn-danger:hover {
   background-color: red;
