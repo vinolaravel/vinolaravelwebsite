@@ -1,4 +1,7 @@
 <x-app-layout>
+    <div class="flexBtnAjouterCellier">
+        <a class="btnRouge" href="{{ route('celliers.create', auth()->user()->id) }}">Créer un cellier</a>
+    </div>
     @forelse ($celliers as $cellier)
         <div class="cellier">
             <div class="flexImgMapNomCellier">
@@ -37,9 +40,6 @@
         @empty
         <div class="flexDivACBtnAC">
             <p class="paraAucunCellier">Aucun cellier disponible</p>
-            <div class="flexBtnAjouterCellier">
-                <a class="btnRouge" href="{{ route('celliers.create', auth()->user()->id) }}">Créer un cellier</a>
-            </div>
         </div>
         @endforelse
             <!-- <a href="{{ route('celliers.create', auth()->user()->id) }}">Créer un nouveau cellier</a> -->
