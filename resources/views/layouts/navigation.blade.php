@@ -15,9 +15,9 @@
         </button>
     
         <div class="dropdown-content">
-            <x-nav-link :href="route('profile.edit')">
+            <!-- <x-nav-link :href="route('profile.edit')">
                 {{ __('Profile') }}
-            </x-nav-link>
+            </x-nav-link> -->
             <x-nav-link :href="route('celliers')" :active="request()->routeIs('celliers')">
                 {{ __('Mes celliers') }}
             </x-nav-link>
