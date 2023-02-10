@@ -13,8 +13,6 @@
         <!-- css -->
         <link rel="stylesheet" href="{{ URL::asset('css/main.css') }}">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="bodyLanding">
         <div>
