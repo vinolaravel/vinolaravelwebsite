@@ -10,16 +10,20 @@
     align-items: center;
 }
 
-.login {
+.formlogin{
     background-color: white;
-    opacity: 0.7;
+}
+
+.login {
+    background-color: transparent;
+    opacity: 1;
     font-weight: bolder;
     text-transform: uppercase;
     width: 30%;
 }
 
 .champlogin {
-    width: 80%;
+    width: 90%;
 }
 
 .login__input  {

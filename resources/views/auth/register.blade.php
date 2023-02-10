@@ -1,9 +1,9 @@
 <x-guest-layout>
     <div class="connex">
         <section class="form register">
-            <form method="POST" action="{{ route('register') }}">
+            <form class="formulaire formlogin" method="POST" action="{{ route('register') }}">
                 @csrf
-                <h5 class="form_title">Inscription</h5><br>
+                <h5 class="form-title">Inscription</h5><br>
 
                 <!-- Name -->
                 <div class="champRegister">
