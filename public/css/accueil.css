@@ -137,7 +137,7 @@ header{
     -moz-box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
     margin-bottom: 30px;
-    height: 150px;
+    /* height: 150px; */
 
   }
   
@@ -180,6 +180,12 @@ header{
   @media (max-width: 480px) {
     .flexProfilImg img{
       margin-left: 0px;
+    }
+
+    .flexDDF{
+      height: 80px;
+      margin-bottom: 15px;
+
     }
 
     .flexDeconnexionPara p{
