@@ -1,0 +1,154 @@
+.menuAdmin {
+    background-color: #d1d1d1;
+    border: 1px solid #e3e3e3;
+    border-radius: 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.titreAdmin {
+    font-size: 16pt;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.logoAdmin {
+    width: 100px;
+    cursor: pointer;
+    transition: transform .3s ease-in-out;
+}
+
+.logoAdmin:hover {
+    transform: scale(1.07);
+}
+
+.iconLogout {
+    transition: transform .1s ease-in-out;
+}
+
+.iconLogout:hover {
+    transform: scale(1.1);
+}
+
+#btnImportation,
+.btnAdmin {
+    padding: 10px 10px;
+    background-color: #910717;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    border-radius: 3px;
+    font-weight: bold;
+    width: 300px;
+    margin: 30px auto;
+    transition: transform .3s ease-in-out;
+}
+
+#btnImportation:hover,
+.btnAdmin:hover {
+    background-color: #b91a2a;
+    transform: scale(.98);
+}
+
+.contenuPageAdmin {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.supprBtn,
+.afficheBtn {
+    all: initial;
+}
+
+.supprBtn i,
+.afficheBtn i {
+    font-size: 16pt;
+    cursor: pointer;
+    border: none;
+    background-color: transparent;
+}
+
+.supprBtn:hover i,
+.afficheBtn:hover i {
+    color: #910717;
+}
+
+.tdAction {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+}
+
+.messageAucun {
+    text-align: center;
+    font-size: 18pt;
+    font-weight: bold;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.introPage {
+    margin: auto;
+    width: 50%;
+    text-align: center;
+    margin: 3em auto;
+}
+
+.introPage h1 {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.introPage h3 {
+    font-weight: bold;
+}
+
+.introPage span {
+    color: red !important;
+}
+
+.optionsPage {
+    margin: auto;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.fa-eye {
+    color: blue;
+}
+
+.fa-trash {
+    color: red;
+}
+
+#tableBouteilles {
+    margin-top: 3em;
+}
+
+@media screen and (max-width: 600px) {
+    .logoAdmin {
+        width: 70px;
+    }
+
+    .titreAdmin {
+        font-size: 12pt;
+    }
+
+    .messageAucun {
+        font-size: 14pt;
+    }
+}

@@ -21,6 +21,7 @@ class AdminCellierController extends Controller
         if (!Gate::allows('admin')) {
             abort(403);
         }
+
         $celliers = Cellier::paginate(10);
 
         return view('admin.cellier.celliersadmin', compact('celliers'));

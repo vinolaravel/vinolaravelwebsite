@@ -89,6 +89,7 @@ class AdminUserController extends Controller
     {
         $user = User::find($idUser);
 
+        $user->celliers()->delete();
         $user->delete();
 
         return redirect()->route('admin.users');
