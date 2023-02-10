@@ -7,7 +7,10 @@
  .carteCatalogue {
    text-align: center;
    width: 23.5%;
-   padding: 50px;
+   padding-left: 50px;
+   padding-right: 50px;
+   padding-top: 20px;
+   padding-bottom: 20px;
    /* margin-left: 10px; */
    text-align: center;
    background-color: #fff;
@@ -19,9 +22,9 @@
 
 
  .carteCatalogue p {
-   margin-top: 10px;
+   /* margin-top: 10px; */
    font-size: 0.9em;
-   line-height: 1.5;
+   /* line-height: 1.5; */
  }
 
 
@@ -29,7 +32,7 @@
    box-shadow: 10px 10px 15px #ccc;
  }
 
- .carteCatalogue img {
+ .imgBouteille {
    width: 50%;
  }
 
@@ -149,7 +152,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border: red solid; */
   gap: 10px;
 }
 
@@ -220,7 +222,6 @@
 .flexIconeBouteille img{
   cursor: pointer;
   width: 30px;
-  /* border: red solid; */
 }
 
 .flexIconeBouteille a{
@@ -256,18 +257,51 @@
   .flexIconeBouteille form{
     padding: 0;
   }
+
+  .flexIconeBouteille img{
+    width: 20px;
+  }
   
   .flexBouteilleCellier {
-    display: block;
+    display: flex;
+    flex-wrap: wrap;
     padding-bottom: 30px;
   }
 
   .carteCatalogue {
-    width: 92%;
-    margin-left: 4%;
-    margin-right: 4%;
-    margin-bottom: 20px;
+    /* flex: 1 0 50%; */
+    padding: 0;
   }
+
+  .flexImgBtlInfo{
+    display: flex;
+    width: 100%;
+  }
+
+  .nomCellier {
+    font-size: 18pt;
+  }
+
+  .divImgBouteille{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .imgBouteille{
+    width: 50px;
+  }
+
+  .flexImgBtlInfo p{
+    font-size: 9px;
+  }
+
+  .divNomBouteille p{
+    font-size: 10px;
+  }
+
+
+  
 }
 
 /* for larger screen */
@@ -282,6 +316,9 @@
   }
 }
 
+.flexImgBtlInfo{
+  width: 100%;
+}
 
 .divNomBouteille{
   height: 70px;

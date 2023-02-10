@@ -10,19 +10,29 @@
     <div class="flexBouteilleCellier">
     @forelse ($bouteilles as $bouteille)
         <div class="carteCatalogue">
-            @if (substr($bouteille->image, 0, 8) == 'https://')
-                <img src="{{ $bouteille->image }}" alt="{{ $bouteille->nom }}">
-            @else
-                <img src="{{ asset('images/' . $bouteille->image) }}" alt="{{ $bouteille->nom }}">
-            @endif
-            <div class="divNomBouteille">
-                <p>{{ $bouteille->nom }}</p>
+           
+            <div class="flexImgBtlInfo">
+
+                <div class="divImgBouteille">
+                    
+                    @if (substr($bouteille->image, 0, 8) == 'https://')
+                    <img class="imgBouteille" src="{{ $bouteille->image }}" alt="{{ $bouteille->nom }}">
+                    @else
+                    <img class="imgBouteille" src="{{ asset('images/' . $bouteille->image) }}" alt="{{ $bouteille->nom }}">
+                    @endif
+                </div>
+                <div>
+                    
+                    <div class="divNomBouteille">
+                        <p>{{ $bouteille->nom }}</p>
+                    </div>
+                    <p><b>Quantité:</b> {{ $bouteille->quantite }}</p>
+                    <p>Vin {{ $bouteille->type->type }} | {{ $bouteille->format }} | {{ $bouteille->pays }}</p>
+                    <p><b>Prix d'achat:</b> {{ $bouteille->prix_achat }}$</p>
+                    <p><b>Achetée le:</b> {{ $bouteille->date_achat }}</p>
+                    
+                </div>
             </div>
-            <h3><b>Quantité:</b> {{ $bouteille->quantite }}</h3>
-            <span>Vin {{ $bouteille->type->type }} | {{ $bouteille->format }} | {{ $bouteille->pays }}</span><br>
-            <span><b>Prix d'achat:</b> {{ $bouteille->prix_achat }}$</span><br>
-            <span><b>Achetée le:</b> {{ $bouteille->date_achat }}</span>
-        
 
             <div class="flexIconeBouteille">
                 

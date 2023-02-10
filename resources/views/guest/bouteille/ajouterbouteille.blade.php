@@ -444,26 +444,23 @@
             titreNew.style.display = 'block';
         });
 
+
     document.querySelector("#nom").addEventListener("keyup", function(e) {
         let input = e.target;
         let nom = input.value;
 
-        fetch('/search?nom=' + nom)
-        .then(response => response.json())
-        .then(bouteilles => {
-            let listeAutoComplete = document.querySelector(".listeAutoComplete");
-            listeAutoComplete.innerHTML = "";
-            bouteilles.forEach(bouteille => {
-                listeAutoComplete.innerHTML += "<option>" + bouteille.nom + "</option>";
+        if (nom.length >= 1) {
+            fetch("/search?nom=" + nom)
+                .then(response => response.json())
+                .then(bouteilles => {
+                let listeAutoComplete = document.querySelector(".listeAutoComplete");
+                listeAutoComplete.innerHTML = "";
+                bouteilles.forEach(bouteille => {
+                    listeAutoComplete.innerHTML += "<option>" + bouteille.nom + "</option>";
+                });
             });
-        });
-    });
-
-    if (document.querySelector(".listeAutoComplete")) {
-        document.querySelector(".listeAutoComplete").addEventListener("click", function(e) {
-            let input = document.querySelector("#nom");
-            input.value = e.target.innerHTML;
+        } else {
             document.querySelector(".listeAutoComplete").innerHTML = "";
-        });
-    }
+        }
+    });
 </script>
