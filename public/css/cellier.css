@@ -314,6 +314,13 @@ width: 15%;
 /* media query phone */
 
 @media screen and (max-width: 480px) {
+
+
+  .flexImageEditBouteille img{
+    width: 40%;
+    margin-bottom: 10px;
+  }
+
   .flexIconeBouteille a{
     padding: 0;
   }
@@ -401,3 +408,9 @@ width: 15%;
   align-items: center;
 }
 
+
+.flexImageEditBouteille{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
