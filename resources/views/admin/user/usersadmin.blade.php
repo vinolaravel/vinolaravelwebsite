@@ -2,32 +2,40 @@
     <div class="introPage">
         <h1>Liste des utilisateurs</h1>
         <h4>Nombre des utilisateurs inscrits: <span>{{$users->count()}}</span></h4>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mb-2 mr-sm-2" type="search" placeholder="Rechercher..." aria-label="Search" id="searchTerm">
+            <button class="btn btn-outline-danger my-2 my-sm-0" type="submit" id="searchBtn">Rechercher</button>
+        </form>
     </div>
     @if ($users->count() > 0)
     <table id="example" class="table table-striped" style="width:100%">
-        <tr>
-            <th>Nom</th>
-            <th>Courriel</th>
-            <th class="di">Date d'inscription</th>
-            <th class="nbc">Nombre de celliers</th>
-            <th>Actions</th>
-        </tr>
-        @foreach ($users as $user)
+        <thead>
             <tr>
-                <td>{{ $user->name }}</td>
-                <td>{{ $user->email }}</td>
-                <td>{{ $user->created_at->format('d-m-Y') }}</td>
-                <td>{{ $user->celliers->count() }} </td>
-                <td class="tdAction">
-                    <a class="afficheBtn" href="{{ route('admin.afficheCelliers', $user->id) }}"><i class="fa-solid fa-eye"></i></a>
-                    <form  action="{{ route('admin.userDelete', $user->id) }}" method="post">
-                        @csrf
-                        @method('DELETE')
-                        <button class="supprBtn" type="submit"><i class="fa-solid fa-trash"></i></button>
-                    </form>
-                </td>
+                <th>Nom</th>
+                <th>Courriel</th>
+                <th class="di">Date d'inscription</th>
+                <th class="nbc">Nombre de celliers</th>
+                <th>Actions</th>
             </tr>
-        @endforeach
+        </thead>
+        <tbody id="tableData">
+            @foreach ($users as $user)
+                <tr>
+                    <td>{{ $user->name }}</td>
+                    <td>{{ $user->email }}</td>
+                    <td>{{ $user->created_at->format('d-m-Y') }}</td>
+                    <td>{{ $user->celliers->count() }} </td>
+                    <td class="tdAction">
+                        <a class="afficheBtn" href="{{ route('admin.afficheCelliers', $user->id) }}"><i class="fa-solid fa-eye"></i></a>
+                        <form  action="{{ route('admin.userDelete', $user->id) }}" method="post">
+                            @csrf
+                            @method('DELETE')
+                            <button class="supprBtn" type="submit"><i class="fa-solid fa-trash"></i></button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
+        </tbody>
     </table>
     @else
         <div class="messageAucun">
@@ -39,29 +47,22 @@
         {{  $users->links()  }}
     </div>
 </x-app-layout>
-
-
-{{-- <script src="https://code.jquery.com/jquery-3.5.1.js"></script> --}}
-<script src="https://cdn.datatables.net/1.13.1/js/jquery.dataTables.min.js"></script>
-<script src="https://cdn.datatables.net/1.13.1/js/dataTables.bootstrap5.min.js"></script>
 <script>
-    if (window.innerWidth < 520) {
-        document.querySelector('.di').remove();
-        document.querySelector('.nbc').remove();
-        let table = document.getElementById('example');
-        let rows = table.getElementsByTagName('tr');
-
+    document.getElementById("searchBtn").addEventListener("click", function(event){
+        event.preventDefault();
+        let searchTerm = document.getElementById("searchTerm").value.toLowerCase();
+        let tableData = document.getElementById("tableData");
+        let rows = tableData.getElementsByTagName("tr");
         for (let i = 0; i < rows.length; i++) {
-            let cells = rows[i].getElementsByTagName('td');
-            for (let j = 0; j < cells.length; j++) {
-                if (j == 2 || j == 3) {
-                    cells[j].style.display = 'none';
+            let firstCol = rows[i].getElementsByTagName("td")[0];
+            let secondCol = rows[i].getElementsByTagName("td")[1];
+            if (firstCol || secondCol) {
+                if (firstCol.innerHTML.toLowerCase().indexOf(searchTerm) > -1 || secondCol.innerHTML.toLowerCase().indexOf(searchTerm) > -1) {
+                    rows[i].style.display = "";
+                } else {
+                    rows[i].style.display = "none";
                 }
             }
         }
-    } else {
-        $(document).ready(function() {
-            $('#example').DataTable();
-        });
-    }
+    });
 </script>
