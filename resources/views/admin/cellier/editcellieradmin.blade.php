@@ -4,12 +4,12 @@
         <form action="{{ route('admin.updateCellier', [$user->id, $cellier->id]) }}" method="post">
             @csrf
             @method('PUT')
-            <div class="form-group">
+            <div>
                 <label for="nom">Nom du cellier</label>
                 <input type="text" name="nom" id="nom" placeholder="{{old('nom', $cellier->nom)}}">
             </div>
 
-            <button type="submit" class="btn btn-primary">Appliquer</button>
+            <button type="submit" class="">Appliquer</button>
         </form>
     </section>
 </x-app-layout>
