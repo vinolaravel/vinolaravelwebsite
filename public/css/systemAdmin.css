@@ -12,6 +12,22 @@
     padding-right: 20px;
 }
 
+.menuAdmin > div{
+    flex:1;
+}
+
+.divLogoAdmin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divDeconnexionAdmin{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
 .titreAdmin {
     font-size: 16pt;
     font-weight: bold;

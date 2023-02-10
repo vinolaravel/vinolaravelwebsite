@@ -3,13 +3,13 @@
         Admin Panel
     </div>
 
-    <div>
+    <div class="divLogoAdmin">
         <a href="{{ route('admin') }}">
-        <img class="logoAdmin" src="{{ asset('img/vinologo.png') }}" alt="logo" title="Page d'accueil (Admin)">
+            <img class="logoAdmin" src="{{ asset('img/vinologo.png') }}" alt="logo" title="Page d'accueil (Admin)">
         </a>
     </div>
 
-    <div>
+    <div class="divDeconnexionAdmin">
         <form method="POST" action="{{ route('logout') }}" class="iconLogout">
             @csrf
             
