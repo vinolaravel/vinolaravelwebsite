@@ -1,9 +1,11 @@
 <x-app-layout>
-    <form action="{{ route('bouteilles.store', $cellier->id) }}" method="post" enctype="multipart/form-data">
+    <form class="formulaire" action="{{ route('bouteilles.store', $cellier->id) }}" method="post" enctype="multipart/form-data">
         @csrf
-
-        <button class="btnRouge" id="btnSAQ" style="display: none;">Choisir une bouteille de la SAQ</button>
-        <button class="btnRouge" id="btnPerso">Insérer une nouvelle bouteille (hors SAQ)</button>
+        <div class="flexCenterBtnAjouterBtl">
+            <button class="btnRouge" id="btnSAQ" style="display: none;">Choisir une bouteille de la SAQ</button>
+            <button class="btnRouge" id="btnPerso">Ajouter une bouteille personnelle</button>
+        </div>
+        
         
         <h1 id="titreSaq">Ajouter une bouteille de la SAQ</h1>
         <h1 id="titreNew" style="display: none;">Ajouter une bouteille personnelle</h1>
@@ -21,7 +23,7 @@
 
             <div>
                 <label for="prix_achat">Prix d'achat</label>
-                <input type="number" name="prix_achat" id="prix_achat" placeholder="entrez prix" value="{{ old('prix_achat') }}">
+                <input type="number" min='0' name="prix_achat" id="prix_achat" placeholder="entrez prix" value="{{ old('prix_achat') }}">
                 @error('prix_achat')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
@@ -53,7 +55,7 @@
 
             <div>
                 <label for="quantite">Quantite</label>
-                <input type="number" name="quantite" id="quantite" placeholder="Entrez la quantite" value="{{ old('quantite') }}">
+                <input type="number" name="quantite" min='1' id="quantite" placeholder="Entrez la quantite" value="{{ old('quantite') }}">
                 @error('quantite')
                     <span class="text-danger">{{ $message }}</span>
                 @enderror
@@ -348,7 +350,7 @@
 
             <div>
                 <label for="prix_achat">Prix d'achat</label>
-                <input type="number" name="prix_achat" id="prix_achat" placeholder="entrez prix" value="{{ old('prix_achat') }}">
+                <input type="number" name="prix_achat" min='0' id="prix_achat" placeholder="entrez prix" value="{{ old('prix_achat') }}">
                 @error('prix_achat')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -364,7 +366,7 @@
 
             <div>
                 <label for="quantite">Quantité</label>
-                <input type="number" name="quantite" id="quantite" placeholder="Entrez la quantite" value="{{ old('quantite') }}">
+                <input type="number" name="quantite" min='1' id="quantite" placeholder="Entrez la quantite" value="{{ old('quantite') }}">
                 @error('quantite')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -407,7 +409,9 @@
 
         <section id="newBouteille" style="display: none"></section>
 
-        <button type="submit" id="btnAjouter" class="btnRouge">Ajouter</button>
+        <div class="flexCenterBtnAjouterBtl">
+            <button style="width: 200px;" type="submit" id="btnAjouter" class="btnRouge">Ajouter</button>
+        </div>
     </form>
 </x-app-layout>
 
