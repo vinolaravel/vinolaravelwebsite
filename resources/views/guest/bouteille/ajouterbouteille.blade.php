@@ -6,9 +6,10 @@
             <button class="btnRouge" id="btnPerso">Ajouter une bouteille personnelle</button>
         </div>
         
-        
-        <h1 id="titreSaq">Ajouter une bouteille de la SAQ</h1>
-        <h1 id="titreNew" style="display: none;">Ajouter une bouteille personnelle</h1>
+        <div class="flexCenterBtnAjouterBtl">
+            <h1 id="titreSaq">Ajouter une bouteille de la SAQ</h1>
+            <h1 id="titreNew" style="display: none;">Ajouter une bouteille personnelle</h1>
+        </div>
 
         <section id="saqSection">
             <div class="rechercher">
@@ -448,23 +449,27 @@
             titreNew.style.display = 'block';
         });
 
-
     document.querySelector("#nom").addEventListener("keyup", function(e) {
         let input = e.target;
         let nom = input.value;
 
-        if (nom.length >= 1) {
-            fetch("/search?nom=" + nom)
-                .then(response => response.json())
-                .then(bouteilles => {
-                let listeAutoComplete = document.querySelector(".listeAutoComplete");
-                listeAutoComplete.innerHTML = "";
-                bouteilles.forEach(bouteille => {
-                    listeAutoComplete.innerHTML += "<option>" + bouteille.nom + "</option>";
-                });
+        fetch('/search?nom=' + nom)
+        .then(response => response.json())
+        .then(bouteilles => {
+            let listeAutoComplete = document.querySelector(".listeAutoComplete");
+            listeAutoComplete.innerHTML = "";
+            bouteilles.forEach(bouteille => {
+                listeAutoComplete.innerHTML += "<option>" + bouteille.nom + "</option>";
             });
-        } else {
-            document.querySelector(".listeAutoComplete").innerHTML = "";
-        }
+        });
     });
+
+    if (document.querySelector(".listeAutoComplete")) {
+        document.querySelector(".listeAutoComplete").addEventListener("click", function(e) {
+            let input = document.querySelector("#nom");
+            input.value = e.target.innerHTML;
+            document.querySelector(".listeAutoComplete").innerHTML = "";
+        });
+    }
+
 </script>
