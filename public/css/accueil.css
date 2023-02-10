@@ -140,7 +140,31 @@ header{
     /* height: 150px; */
 
   }
+
+  /* .flexDDF div */
+  .flexDDF > div{
+    flex: 1;
+  }
   
+
+  .flexDivLogo{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  .flexDivDeconnexion{
+    display: flex;
+    justify-content: flex-end;
+    /* align-items: flex-end; */
+  }
+
+  .flexDivDeconnexion form{
+    margin-right: 30px;
+
+  }
+
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
@@ -180,6 +204,11 @@ header{
   @media (max-width: 480px) {
     .flexProfilImg img{
       margin-left: 0px;
+    }
+
+    .flexDivDeconnexion form{
+      margin-right: 15px;
+  
     }
 
     .flexDDF{

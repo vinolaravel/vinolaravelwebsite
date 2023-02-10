@@ -27,11 +27,11 @@
         </div>
     </div>
 
-    <div>
+    <div class="flexDivLogo">
         <img class="logo" src="{{ asset('img/vinologo.png') }}" alt="logo">
     </div>
 
-    <div>
+    <div class="flexDivDeconnexion">
         <!-- Authentication -->
         <form method="POST" action="{{ route('logout') }}">
             @csrf
