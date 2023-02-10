@@ -34,3 +34,13 @@
       border: none;
     }
 }
+
+.flexBtnAjouterCellier{
+  display: flex;
+  justify-content: center;
+}
+
+.flexBtnAjouterCellier a:hover{
+  text-decoration: none;
+  color: white;
+}
